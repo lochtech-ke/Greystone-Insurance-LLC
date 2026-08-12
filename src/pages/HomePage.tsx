@@ -59,7 +59,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
       />
 
       {/* === 2. TRUST / ACCREDITATION BAR === */}
-      <section className="bg-[#11141A] border-b border-white/5 py-5 overflow-hidden">
+      <section className="bg-[var(--bg-dark-900)] border-b border-[var(--bg-dark-800)] py-5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 overflow-x-auto pb-1 scrollbar-hide">
             <span className="text-[10px] uppercase tracking-widest font-bold text-slate-500 whitespace-nowrap shrink-0">
@@ -71,7 +71,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
                   key={label}
                   className="flex items-center gap-2 text-slate-300 whitespace-nowrap text-sm font-medium shrink-0"
                 >
-                  <Icon className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                  <Icon className="w-4 h-4 text-[var(--bronze-500)] shrink-0" />
                   <span className="text-xs">{label}</span>
                 </div>
               ))}
@@ -81,7 +81,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
       </section>
 
       {/* === 3. INSURANCE AS FINANCIAL INSTRUMENT === */}
-      <section className="py-20 bg-[#0B0D11] relative">
+      <section className="py-20 bg-[var(--bg-dark-950)] relative">
         <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
@@ -105,7 +105,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
                   'Direct claim payout to lender within agreed SLA — no liquidity risk for the bank',
                 ].map((point) => (
                   <div key={point} className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[var(--bronze-500)] shrink-0 mt-0.5" />
                     <span className="text-slate-300 text-sm leading-relaxed">{point}</span>
                   </div>
                 ))}
@@ -142,15 +142,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
                   desc: 'Lender accepts asset at 95–100% face value. Borrowing base maximized. Margin reduced 40–75bps. No equity dilution.',
                   highlight: true,
                   icon: ShieldCheck,
-                  iconColor: 'text-[#D4AF37]',
+                  iconColor: 'text-[var(--bronze-500)]',
                 },
               ].map(({ step, desc, highlight, icon: Icon, iconColor }) => (
                 <div
                   key={step}
                   className={`p-6 rounded-xl border relative overflow-hidden ${
                     highlight
-                      ? 'bg-[#202632] border-[#D4AF37]/50 shadow-lg'
-                      : 'bg-[#181C24] border-white/5'
+                      ? 'bg-[var(--bg-dark-800)] border-[var(--bronze-500)]/50 shadow-lg'
+                      : 'bg-[var(--bg-dark-850)] border-[var(--bg-dark-800)]'
                   }`}
                 >
                   {highlight && (
@@ -159,7 +159,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
                   <div className="flex items-start gap-3">
                     <Icon className={`w-5 h-5 shrink-0 mt-0.5 ${iconColor}`} />
                     <div>
-                      <h4 className={`font-semibold text-sm mb-1.5 ${highlight ? 'text-[#D4AF37]' : 'text-slate-400'}`}>
+                      <h4 className={`font-semibold text-sm mb-1.5 ${highlight ? 'text-[var(--bronze-500)]' : 'text-slate-400'}`}>
                         {step}
                       </h4>
                       <p className="text-xs text-slate-300 leading-relaxed">{desc}</p>
@@ -169,13 +169,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
               ))}
 
               {/* Asset Bankability Matrix Mini-Table */}
-              <div className="p-4 rounded-xl bg-[#11141A] border border-white/10 overflow-x-auto">
+              <div className="p-4 rounded-xl bg-[var(--bg-dark-900)] border border-[var(--bg-dark-700)] overflow-x-auto">
                 <table className="w-full text-xs">
                   <thead>
-                    <tr className="border-b border-white/10">
+                    <tr className="border-b border-[var(--bg-dark-700)]">
                       <th className="text-left py-2 pr-4 text-slate-400 font-semibold uppercase tracking-wider text-[10px]">Asset Type</th>
                       <th className="text-right py-2 pr-3 text-slate-400 font-semibold uppercase tracking-wider text-[10px]">Standard Haircut</th>
-                      <th className="text-right py-2 text-[#D4AF37] font-semibold uppercase tracking-wider text-[10px]">Greystone Haircut</th>
+                      <th className="text-right py-2 text-[var(--bronze-500)] font-semibold uppercase tracking-wider text-[10px]">Greystone Haircut</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -185,10 +185,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
                       { asset: 'Commercial Property', standard: '40%', greystone: '10%' },
                       { asset: 'Equipment / Machinery', standard: '45%', greystone: '10%' },
                     ].map(({ asset, standard, greystone }) => (
-                      <tr key={asset} className="border-b border-white/5">
+                      <tr key={asset} className="border-b border-[var(--bg-dark-800)]">
                         <td className="py-2 pr-4 text-slate-200">{asset}</td>
                         <td className="py-2 pr-3 text-right text-slate-400 line-through">{standard}</td>
-                        <td className="py-2 text-right font-bold text-[#D4AF37]">{greystone}</td>
+                        <td className="py-2 text-right font-bold text-[var(--bronze-500)]">{greystone}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -201,7 +201,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
       </section>
 
       {/* === 4. COLLATERAL CALCULATOR === */}
-      <section className="py-20 bg-[#11141A]">
+      <section className="py-20 bg-[var(--bg-dark-900)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 space-y-3">
             <div className="inline-flex items-center gap-2 badge-bronze mx-auto">
@@ -212,15 +212,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
               Calculate How Much Capital a Greystone Policy Unlocks
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-sm">
-              Adjust your asset size and debt target — see how loss-payee insurance policy eliminates haircuts and expands your available financing. <em>Illustrative estimates only; subject to underwriting.</em>
             </p>
           </div>
-          <CollateralCalculator onOpenUnderwritingModal={onOpenUnderwritingModal} />
+          <div className="relative">
+            <div className="glow-effect top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            <div className="relative z-10">
+              <CollateralCalculator onOpenUnderwritingModal={onOpenUnderwritingModal} />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* === 5. PRODUCT PILLARS === */}
-      <section className="py-20 bg-[#0B0D11] relative">
+      <section className="py-20 bg-[var(--bg-dark-950)] relative">
         <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-14 space-y-3">
@@ -245,10 +249,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
                   onClick={() => onNavigate('services')}
                 >
                   <div className="flex items-start justify-between">
-                    <div className="w-11 h-11 rounded-lg bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center group-hover:bg-[#D4AF37]/25 transition-all">
-                      <Icon className="w-5 h-5 text-[#D4AF37]" />
+                    <div className="w-11 h-11 rounded-lg bg-[#D4AF37]/15 border border-[var(--bronze-500)]/30 flex items-center justify-center group-hover:bg-[#D4AF37]/25 transition-all">
+                      <Icon className="w-5 h-5 text-[var(--bronze-500)]" />
                     </div>
-                    <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-[#D4AF37] group-hover:translate-x-1 transition-all" />
+                    <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-[var(--bronze-500)] group-hover:translate-x-1 transition-all" />
                   </div>
                   <div>
                     <h3 className="font-serif-display text-lg font-bold text-white mb-2 group-hover:text-[#F3E4C8] transition-colors">
@@ -257,7 +261,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
                     <p className="text-slate-400 text-sm leading-relaxed">{product.shortDesc}</p>
                   </div>
                   <div className="bronze-left-border pl-3 py-1">
-                    <p className="text-xs text-[#D4AF37] font-semibold leading-relaxed">{product.lossPayeeBenefit}</p>
+                    <p className="text-xs text-[var(--bronze-500)] font-semibold leading-relaxed">{product.lossPayeeBenefit}</p>
                   </div>
                 </div>
               );
@@ -269,14 +273,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
               className="btn-secondary-dark text-sm group cursor-pointer"
             >
               <span>View All Solutions & Coverage Details</span>
-              <ArrowRight className="w-4 h-4 text-[#D4AF37] group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 text-[var(--bronze-500)] group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
       </section>
 
       {/* === 6. PROCESS STRIP === */}
-      <section className="py-20 bg-[#11141A]">
+      <section className="py-20 bg-[var(--bg-dark-900)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-white">
@@ -293,8 +297,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
                 {idx < PROCESS_STEPS.length - 1 && (
                   <div className="hidden xl:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-[#D4AF37]/50 to-transparent z-0" />
                 )}
-                <div className="relative z-10 p-6 rounded-xl bg-[#181C24] border border-white/8 h-full space-y-4">
-                  <div className="font-cinzel text-4xl font-black text-[#D4AF37]/20 leading-none">
+                <div className="relative z-10 p-6 rounded-xl bg-[var(--bg-dark-850)] border border-[var(--bg-dark-800)] h-full space-y-4">
+                  <div className="font-cinzel text-4xl font-black text-[var(--bronze-500)]/20 leading-none">
                     {step.num}
                   </div>
                   <h3 className="font-serif-display text-lg font-bold text-white">
@@ -310,7 +314,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
       </section>
 
       {/* === 7. CASE STUDIES / SOCIAL PROOF === */}
-      <section className="py-20 bg-[#0B0D11] relative overflow-hidden">
+      <section className="py-20 bg-[var(--bg-dark-950)] relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-[#D4AF37]/5 blur-[100px] rounded-full pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-14 space-y-3">
@@ -327,10 +331,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {CASE_STUDIES.map((cs) => (
-              <div key={cs.id} className="glass-panel rounded-xl p-7 border border-white/10 space-y-5 flex flex-col">
+              <div key={cs.id} className="glass-panel rounded-xl p-7 border border-[var(--bg-dark-700)] space-y-5 flex flex-col">
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <span className="text-xs text-[#D4AF37] font-bold uppercase tracking-wider block mb-1">
+                    <span className="text-xs text-[var(--bronze-500)] font-bold uppercase tracking-wider block mb-1">
                       {cs.clientIndustry}
                     </span>
                     <span className="text-[10px] text-slate-400">{cs.clientRegion}</span>
@@ -347,8 +351,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
                     <p className="text-sm text-slate-300 leading-relaxed">{cs.greystoneSolution}</p>
                   </div>
                 </div>
-                <div className="pt-4 border-t border-white/10 space-y-2">
-                  <h4 className="text-xs font-bold text-[#D4AF37] uppercase tracking-wider">Capital Result:</h4>
+                <div className="pt-4 border-t border-[var(--bg-dark-700)] space-y-2">
+                  <h4 className="text-xs font-bold text-[var(--bronze-500)] uppercase tracking-wider">Capital Result:</h4>
                   <p className="text-sm font-semibold text-white leading-relaxed">{cs.capitalResult}</p>
                   <p className="text-[10px] text-slate-500">Mechanism: {cs.covenantMechanism}</p>
                 </div>
@@ -368,7 +372,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
       >
         <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#0B0D11]/70 bg-[#0B0D11]/10 px-4 py-1.5 rounded-full border border-[#0B0D11]/20">
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#0B0D11]/70 bg-[var(--bg-dark-950)]/10 px-4 py-1.5 rounded-full border border-[#0B0D11]/20">
             Your Risk. Our Responsibility.
           </span>
           <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-black text-[#0B0D11] leading-tight">
@@ -380,15 +384,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenUnderwritingModal, onN
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <button
               onClick={onOpenUnderwritingModal}
-              className="bg-[#0B0D11] text-white border border-white/30 font-bold px-8 py-4 rounded hover:bg-[#181C24] transition-all text-sm uppercase tracking-wider flex items-center gap-2 group cursor-pointer shadow-xl"
+              className="bg-[var(--bg-dark-950)] text-white border border-white/30 font-bold px-8 py-4 rounded hover:bg-[var(--bg-dark-850)] transition-all text-sm uppercase tracking-wider flex items-center gap-2 group cursor-pointer shadow-xl"
             >
-              <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />
+              <ShieldCheck className="w-5 h-5 text-[var(--bronze-500)]" />
               <span>Request Underwriting Review</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
             <button
               onClick={() => onNavigate('contact')}
-              className="text-[#0B0D11] font-semibold border border-[#0B0D11]/30 px-8 py-4 rounded hover:bg-[#0B0D11]/10 transition-all text-sm uppercase tracking-wider flex items-center gap-2 cursor-pointer"
+              className="text-[#0B0D11] font-semibold border border-[#0B0D11]/30 px-8 py-4 rounded hover:bg-[var(--bg-dark-950)]/10 transition-all text-sm uppercase tracking-wider flex items-center gap-2 cursor-pointer"
             >
               <span>Contact Global Desk</span>
             </button>

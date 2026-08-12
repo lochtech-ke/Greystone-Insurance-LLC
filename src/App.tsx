@@ -24,7 +24,7 @@ function App() {
   
 
   return (
-    <div className="min-h-screen bg-[#0B0D11] font-sans">
+    <div className="min-h-screen bg-[var(--bg-dark-950)] font-sans">
       <Header
         currentTab={currentTab}
         onNavigate={handleNavigate}

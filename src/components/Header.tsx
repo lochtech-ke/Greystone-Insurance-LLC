@@ -34,8 +34,8 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, onNavigate, onOpenUn
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[#0B0D11]/90 backdrop-blur-md border-b border-[#D4AF37]/20 shadow-2xl py-3' 
-          : 'bg-gradient-to-b from-[#0B0D11]/95 to-[#0B0D11]/60 py-4 border-b border-white/5'
+          ? 'bg-[var(--bg-dark-950)]/90 backdrop-blur-md border-b border-[var(--bronze-500)]/20 shadow-2xl py-3' 
+          : 'bg-gradient-to-b from-[#0B0D11]/95 to-[#0B0D11]/60 py-4 border-b border-[var(--bg-dark-800)]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,13 +65,13 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, onNavigate, onOpenUn
                   onClick={() => onNavigate(item.id)}
                   className={`px-3 py-2 rounded text-sm font-medium transition-all duration-200 relative flex items-center gap-1.5 cursor-pointer ${
                     isActive 
-                      ? 'text-[#D4AF37] font-semibold bg-[#202632]/80 border border-[#D4AF37]/30' 
+                      ? 'text-[var(--bronze-500)] font-semibold bg-[var(--bg-dark-800)]/80 border border-[var(--bronze-500)]/30' 
                       : 'text-slate-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {item.label}
                   {item.badge && (
-                    <span className="bg-[#C59B27]/20 text-[#D4AF37] text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded border border-[#D4AF37]/30 animate-pulse">
+                    <span className="bg-[#C59B27]/20 text-[var(--bronze-500)] text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded border border-[var(--bronze-500)]/30 animate-pulse">
                       {item.badge}
                     </span>
                   )}
@@ -105,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, onNavigate, onOpenUn
               className="p-2 rounded-md text-slate-300 hover:text-white hover:bg-white/10 focus:outline-none"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-[#D4AF37]" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 text-[var(--bronze-500)]" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
 
@@ -114,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, onNavigate, onOpenUn
 
       
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#11141A] border-b border-[#D4AF37]/30 px-4 pt-3 pb-6 space-y-2 shadow-2xl animate-fade-in">
+        <div className="lg:hidden bg-[var(--bg-dark-900)] border-b border-[var(--bronze-500)]/30 px-4 pt-3 pb-6 space-y-2 shadow-2xl animate-fade-in">
           {navItems.map((item) => (
             <button
               key={item.id}
@@ -124,19 +124,19 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, onNavigate, onOpenUn
               }}
               className={`w-full text-left px-4 py-3 rounded-md text-base font-medium flex items-center justify-between ${
                 currentTab === item.id 
-                  ? 'bg-[#202632] text-[#D4AF37] border-l-4 border-[#D4AF37]' 
+                  ? 'bg-[var(--bg-dark-800)] text-[var(--bronze-500)] border-l-4 border-[var(--bronze-500)]' 
                   : 'text-slate-200 hover:bg-white/5'
               }`}
             >
               <span>{item.label}</span>
               {item.badge && (
-                <span className="bg-[#C59B27]/20 text-[#D4AF37] text-xs px-2 py-0.5 rounded border border-[#D4AF37]/30">
+                <span className="bg-[#C59B27]/20 text-[var(--bronze-500)] text-xs px-2 py-0.5 rounded border border-[var(--bronze-500)]/30">
                   {item.badge}
                 </span>
               )}
             </button>
           ))}
-          <div className="pt-4 border-t border-white/10">
+          <div className="pt-4 border-t border-[var(--bg-dark-700)]">
             <button
               onClick={() => {
                 onOpenUnderwritingModal();

@@ -65,7 +65,7 @@ export const ClaimsPage: React.FC<ClaimsPageProps> = ({ onOpenUnderwritingModal:
   return (
     <main className="pt-24">
       {/* Page Header */}
-      <section className="py-20 bg-[#0B0D11] border-b border-[#D4AF37]/20 relative overflow-hidden">
+      <section className="py-20 bg-[var(--bg-dark-950)] border-b border-[var(--bronze-500)]/20 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-5">
@@ -85,7 +85,7 @@ export const ClaimsPage: React.FC<ClaimsPageProps> = ({ onOpenUnderwritingModal:
       </section>
 
       {/* Emergency Claims Bar */}
-      <section className="bg-[#1D170A] border-b border-[#D4AF37]/40 py-4">
+      <section className="bg-[var(--bronze-900)] border-b border-[var(--bronze-500)]/40 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-3">
@@ -93,15 +93,15 @@ export const ClaimsPage: React.FC<ClaimsPageProps> = ({ onOpenUnderwritingModal:
               <span className="font-bold text-white text-sm">24/7 Global Claims Desk — Active</span>
             </div>
             <div className="flex flex-wrap items-center gap-6 text-sm">
-              <a href="mailto:claims@greystoneinsurance.com" className="flex items-center gap-2 text-[#D4AF37] hover:text-white transition-colors">
+              <a href="mailto:claims@greystoneinsurance.com" className="flex items-center gap-2 text-[var(--bronze-500)] hover:text-white transition-colors">
                 <Mail className="w-4 h-4" />
                 <span>claims@greystoneinsurance.com</span>
               </a>
-              <a href="tel:+442079460001" className="flex items-center gap-2 text-[#D4AF37] hover:text-white transition-colors">
+              <a href="tel:+442079460001" className="flex items-center gap-2 text-[var(--bronze-500)] hover:text-white transition-colors">
                 <Phone className="w-4 h-4" />
                 <span>London +44 20 7946 0001</span>
               </a>
-              <a href="tel:+12125550199" className="flex items-center gap-2 text-[#D4AF37] hover:text-white transition-colors">
+              <a href="tel:+12125550199" className="flex items-center gap-2 text-[var(--bronze-500)] hover:text-white transition-colors">
                 <Phone className="w-4 h-4" />
                 <span>New York +1 212 555 0199</span>
               </a>
@@ -111,7 +111,7 @@ export const ClaimsPage: React.FC<ClaimsPageProps> = ({ onOpenUnderwritingModal:
       </section>
 
       {/* 4-Step Claims Process */}
-      <section className="py-20 bg-[#11141A]">
+      <section className="py-20 bg-[var(--bg-dark-900)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14 space-y-3">
             <div className="badge-bronze mx-auto inline-flex">
@@ -128,13 +128,13 @@ export const ClaimsPage: React.FC<ClaimsPageProps> = ({ onOpenUnderwritingModal:
 
           <div className="space-y-6">
             {CLAIMS_STEPS.map((step) => (
-              <div key={step.num} className="glass-panel rounded-xl p-8 border border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              <div key={step.num} className="glass-panel rounded-xl p-8 border border-[var(--bg-dark-700)] grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 <div className="lg:col-span-2 flex items-center gap-4">
-                  <div className="font-cinzel text-4xl font-black text-[#D4AF37]/30 leading-none">{step.num}</div>
+                  <div className="font-cinzel text-4xl font-black text-[var(--bronze-500)]/30 leading-none">{step.num}</div>
                 </div>
                 <div className="lg:col-span-7 space-y-3">
                   <h3 className="font-serif-display text-xl font-bold text-white">{step.title}</h3>
-                  <div className="flex items-center gap-2 text-xs text-[#D4AF37] font-semibold">
+                  <div className="flex items-center gap-2 text-xs text-[var(--bronze-500)] font-semibold">
                     <Clock className="w-3.5 h-3.5" />
                     <span>SLA: {step.sla}</span>
                   </div>
@@ -142,14 +142,14 @@ export const ClaimsPage: React.FC<ClaimsPageProps> = ({ onOpenUnderwritingModal:
                   {step.contacts.length > 0 && (
                     <div className="space-y-1 pt-2">
                       {step.contacts.map((contact) => (
-                        <div key={contact} className="text-xs text-[#D4AF37] font-mono">{contact}</div>
+                        <div key={contact} className="text-xs text-[var(--bronze-500)] font-mono">{contact}</div>
                       ))}
                     </div>
                   )}
                 </div>
                 <div className="lg:col-span-3">
-                  <div className="flex items-center gap-2 p-3 rounded bg-[#D4AF37]/10 border border-[#D4AF37]/30">
-                    <CheckCircle2 className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                  <div className="flex items-center gap-2 p-3 rounded bg-[#D4AF37]/10 border border-[var(--bronze-500)]/30">
+                    <CheckCircle2 className="w-4 h-4 text-[var(--bronze-500)] shrink-0" />
                     <span className="text-xs text-slate-200 font-medium">Documented SLA Commitment</span>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ export const ClaimsPage: React.FC<ClaimsPageProps> = ({ onOpenUnderwritingModal:
       </section>
 
       {/* Claims FAQ */}
-      <section className="py-20 bg-[#0B0D11]">
+      <section className="py-20 bg-[var(--bg-dark-950)]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 space-y-3">
             <h2 className="font-serif-display text-3xl font-bold text-white">Claims FAQs</h2>
@@ -168,14 +168,14 @@ export const ClaimsPage: React.FC<ClaimsPageProps> = ({ onOpenUnderwritingModal:
           </div>
           <div className="space-y-3">
             {CLAIMS_FAQ.map(({ q, a }, i) => (
-              <div key={i} className="glass-panel rounded-xl border border-white/10 overflow-hidden">
+              <div key={i} className="glass-panel rounded-xl border border-[var(--bg-dark-700)] overflow-hidden">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer hover:bg-white/5 transition-colors"
                 >
                   <span className="font-semibold text-white text-sm pr-4">{q}</span>
                   {openFaq === i ? (
-                    <ChevronUp className="w-5 h-5 text-[#D4AF37] shrink-0" />
+                    <ChevronUp className="w-5 h-5 text-[var(--bronze-500)] shrink-0" />
                   ) : (
                     <ChevronDown className="w-5 h-5 text-slate-400 shrink-0" />
                   )}
@@ -193,7 +193,7 @@ export const ClaimsPage: React.FC<ClaimsPageProps> = ({ onOpenUnderwritingModal:
       </section>
 
       {/* Claims CTA */}
-      <section className="py-16 bg-[#11141A] border-t border-[#D4AF37]/20">
+      <section className="py-16 bg-[var(--bg-dark-900)] border-t border-[var(--bronze-500)]/20">
         <div className="max-w-3xl mx-auto px-4 text-center space-y-5">
           <h2 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
             Need to Initiate a Claim?
@@ -213,7 +213,7 @@ export const ClaimsPage: React.FC<ClaimsPageProps> = ({ onOpenUnderwritingModal:
               href="tel:+442079460001"
               className="btn-secondary-dark text-sm cursor-pointer justify-center"
             >
-              <Phone className="w-4 h-4 text-[#D4AF37]" />
+              <Phone className="w-4 h-4 text-[var(--bronze-500)]" />
               <span>Call London 24/7 Line</span>
             </a>
           </div>

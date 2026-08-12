@@ -42,7 +42,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenUnderwritingModal, o
   return (
     <main className="pt-24">
       {/* Page Header */}
-      <section className="py-20 bg-[#0B0D11] border-b border-[#D4AF37]/20 relative overflow-hidden">
+      <section className="py-20 bg-[var(--bg-dark-950)] border-b border-[var(--bronze-500)]/20 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-6">
@@ -63,7 +63,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenUnderwritingModal, o
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 bg-[#11141A]">
+      <section className="py-20 bg-[var(--bg-dark-900)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
@@ -76,7 +76,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenUnderwritingModal, o
               <p className="text-slate-300 leading-relaxed">
                 Our underwriters do not simply assess physical or financial risks. They study lender covenants, credit facility documentation, and Basel III capital adequacy frameworks to engineer policies that qualify as Credit Risk Mitigation instruments — recognized by bank credit committees and approved by institutional investors.
               </p>
-              <div className="p-5 rounded-xl bg-[#202632] border-l-4 border-[#D4AF37]">
+              <div className="p-5 rounded-xl bg-[var(--bg-dark-800)] border-l-4 border-[var(--bronze-500)]">
                 <blockquote className="font-serif-display text-lg italic text-slate-200 leading-relaxed">
                   "Insurance that satisfies your lender is not an expense — it is leverage. Greystone is in the business of turning risk management into a strategic financing advantage."
                 </blockquote>
@@ -93,8 +93,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenUnderwritingModal, o
                   key={title}
                   className="glass-panel glass-panel-hover p-6 rounded-xl space-y-4"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-[#D4AF37]" />
+                  <div className="w-10 h-10 rounded-lg bg-[#D4AF37]/15 border border-[var(--bronze-500)]/30 flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-[var(--bronze-500)]" />
                   </div>
                   <h3 className="font-serif-display text-base font-bold text-white">{title}</h3>
                   <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
@@ -106,7 +106,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenUnderwritingModal, o
       </section>
 
       {/* Our Responsibility Philosophy */}
-      <section className="py-20 bg-[#0B0D11] relative overflow-hidden">
+      <section className="py-20 bg-[var(--bg-dark-950)] relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-14 space-y-3">
@@ -136,9 +136,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenUnderwritingModal, o
                 promise: 'Responsibility means our 24-hour claims activation protocol. We deploy adjusters, represent your interests with reinsurers, and direct proceeds to your lender within documented SLA timelines.'
               },
             ].map(({ phase, icon: Icon, promise }) => (
-              <div key={phase} className="glass-panel rounded-xl p-8 space-y-5 border border-white/10">
-                <div className="w-14 h-14 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center mx-auto">
-                  <Icon className="w-6 h-6 text-[#D4AF37]" />
+              <div key={phase} className="glass-panel rounded-xl p-8 space-y-5 border border-[var(--bg-dark-700)]">
+                <div className="w-14 h-14 rounded-full bg-[#D4AF37]/15 border border-[var(--bronze-500)]/30 flex items-center justify-center mx-auto">
+                  <Icon className="w-6 h-6 text-[var(--bronze-500)]" />
                 </div>
                 <h3 className="font-serif-display text-lg font-bold text-white">{phase}</h3>
                 <div className="bronze-accent-line w-12 mx-auto" />
@@ -150,7 +150,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenUnderwritingModal, o
       </section>
 
       {/* Institutional vs Retail Comparison */}
-      <section className="py-20 bg-[#11141A]">
+      <section className="py-20 bg-[var(--bg-dark-900)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 space-y-3">
             <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-white">
@@ -160,21 +160,21 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenUnderwritingModal, o
               Greystone operates at a different level to conventional insurance brokers. Here is the structural distinction.
             </p>
           </div>
-          <div className="overflow-x-auto rounded-xl border border-white/10">
+          <div className="overflow-x-auto rounded-xl border border-[var(--bg-dark-700)]">
             <table className="w-full">
               <thead>
-                <tr className="bg-[#181C24] border-b border-white/10">
+                <tr className="bg-[var(--bg-dark-850)] border-b border-[var(--bg-dark-700)]">
                   <th className="py-4 px-6 text-left text-xs font-bold uppercase tracking-widest text-slate-400">Dimension</th>
-                  <th className="py-4 px-6 text-left text-xs font-bold uppercase tracking-widest text-[#D4AF37]">Greystone Institutional</th>
+                  <th className="py-4 px-6 text-left text-xs font-bold uppercase tracking-widest text-[var(--bronze-500)]">Greystone Institutional</th>
                   <th className="py-4 px-6 text-left text-xs font-bold uppercase tracking-widest text-slate-500">Standard Retail</th>
                 </tr>
               </thead>
               <tbody>
                 {institutionalVsRetail.map(({ dimension, institutional, retail }, i) => (
-                  <tr key={dimension} className={`border-b border-white/5 ${i % 2 === 0 ? 'bg-[#11141A]' : 'bg-[#181C24]/50'}`}>
+                  <tr key={dimension} className={`border-b border-[var(--bg-dark-800)] ${i % 2 === 0 ? 'bg-[var(--bg-dark-900)]' : 'bg-[var(--bg-dark-850)]/50'}`}>
                     <td className="py-4 px-6 text-slate-200 text-sm font-semibold">{dimension}</td>
                     <td className="py-4 px-6 text-slate-200 text-sm flex items-start gap-2">
-                      <Check className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
+                      <Check className="w-4 h-4 text-[var(--bronze-500)] shrink-0 mt-0.5" />
                       {institutional}
                     </td>
                     <td className="py-4 px-6 text-slate-500 text-sm">{retail}</td>
@@ -187,7 +187,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenUnderwritingModal, o
       </section>
 
       {/* Regulatory & Capacity Standards */}
-      <section className="py-16 bg-[#0B0D11] border-t border-[#D4AF37]/20">
+      <section className="py-16 bg-[var(--bg-dark-950)] border-t border-[var(--bronze-500)]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
@@ -196,9 +196,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenUnderwritingModal, o
               { label: 'A.M. Best Syndicate Placement', sub: 'Financial Strength Verified' },
               { label: 'Basel III CRM Eligible', sub: 'Bank Capital Mitigation' },
             ].map(({ label, sub }) => (
-              <div key={label} className="text-center p-5 rounded-xl bg-[#181C24] border border-white/8 space-y-2">
-                <div className="w-10 h-10 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center mx-auto">
-                  <Shield className="w-5 h-5 text-[#D4AF37]" />
+              <div key={label} className="text-center p-5 rounded-xl bg-[var(--bg-dark-850)] border border-[var(--bg-dark-800)] space-y-2">
+                <div className="w-10 h-10 rounded-full bg-[#D4AF37]/15 border border-[var(--bronze-500)]/30 flex items-center justify-center mx-auto">
+                  <Shield className="w-5 h-5 text-[var(--bronze-500)]" />
                 </div>
                 <h4 className="text-white text-sm font-bold">{label}</h4>
                 <p className="text-slate-400 text-xs">{sub}</p>
@@ -209,7 +209,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenUnderwritingModal, o
       </section>
 
       {/* About CTA */}
-      <section className="py-16 bg-[#11141A] border-t border-white/5">
+      <section className="py-16 bg-[var(--bg-dark-900)] border-t border-[var(--bg-dark-800)]">
         <div className="max-w-3xl mx-auto px-4 text-center space-y-5">
           <h2 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
             Ready to Engage the Greystone Risk Desk?
@@ -230,7 +230,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenUnderwritingModal, o
               className="btn-secondary-dark text-sm cursor-pointer"
             >
               <span>Learn the Financial Mechanics</span>
-              <ChevronRight className="w-4 h-4 text-[#D4AF37]" />
+              <ChevronRight className="w-4 h-4 text-[var(--bronze-500)]" />
             </button>
           </div>
         </div>

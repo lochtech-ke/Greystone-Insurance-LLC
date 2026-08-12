@@ -48,13 +48,13 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#0B0D11]/80 backdrop-blur-md"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[var(--bg-dark-950)]/80 backdrop-blur-md"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div className="w-full max-w-2xl glass-panel rounded-2xl border border-[#D4AF37]/40 shadow-[0_25px_80px_rgba(0,0,0,0.9)] overflow-hidden animate-fade-in">
+      <div className="w-full max-w-2xl glass-panel rounded-2xl border border-[var(--bronze-500)]/40 shadow-[0_25px_80px_rgba(0,0,0,0.9)] overflow-hidden animate-fade-in">
         
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-[#181C24] to-[#11141A] px-6 py-5 flex items-start justify-between border-b border-[#D4AF37]/30 relative overflow-hidden">
+        <div className="bg-gradient-to-r from-[#181C24] to-[#11141A] px-6 py-5 flex items-start justify-between border-b border-[var(--bronze-500)]/30 relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
           <div>
             <div className="badge-bronze mb-2">
@@ -78,12 +78,12 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
         </div>
 
         {/* Step Progress Bar */}
-        <div className="flex bg-[#0B0D11]">
+        <div className="flex bg-[var(--bg-dark-950)]">
           {[1, 2, 3].map((s) => (
             <div
               key={s}
               className={`flex-1 h-1 transition-all duration-300 ${
-                s <= step ? 'bg-[#D4AF37]' : 'bg-[#202632]'
+                s <= step ? 'bg-[#D4AF37]' : 'bg-[var(--bg-dark-800)]'
               }`}
             />
           ))}
@@ -94,17 +94,17 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
 
             {submitted ? (
               <div className="text-center py-12 space-y-5 animate-fade-in">
-                <div className="w-16 h-16 rounded-full bg-[#D4AF37]/20 border-2 border-[#D4AF37] flex items-center justify-center mx-auto animate-pulse-glow">
-                  <CheckCircle2 className="w-8 h-8 text-[#D4AF37]" />
+                <div className="w-16 h-16 rounded-full bg-[#D4AF37]/20 border-2 border-[var(--bronze-500)] flex items-center justify-center mx-auto animate-pulse-glow">
+                  <CheckCircle2 className="w-8 h-8 text-[var(--bronze-500)]" />
                 </div>
                 <h3 className="font-serif-display text-2xl font-bold text-white">
                   Inquiry Received
                 </h3>
                 <p className="text-slate-300 max-w-md mx-auto leading-relaxed">
-                  Your institutional risk structuring inquiry has been received. A Greystone underwriter will respond within <strong className="text-[#D4AF37]">48 business hours</strong> with a preliminary risk assessment and policy structuring proposal.
+                  Your institutional risk structuring inquiry has been received. A Greystone underwriter will respond within <strong className="text-[var(--bronze-500)]">48 business hours</strong> with a preliminary risk assessment and policy structuring proposal.
                 </p>
-                <div className="inline-flex items-center gap-2 bg-[#202632] border border-[#D4AF37]/30 px-4 py-2 rounded text-sm text-slate-300">
-                  <Shield className="w-4 h-4 text-[#D4AF37]" />
+                <div className="inline-flex items-center gap-2 bg-[var(--bg-dark-800)] border border-[var(--bronze-500)]/30 px-4 py-2 rounded text-sm text-slate-300">
+                  <Shield className="w-4 h-4 text-[var(--bronze-500)]" />
                   <span>Reference: GIL-{Math.random().toString(36).substring(2, 8).toUpperCase()}</span>
                 </div>
                 <button
@@ -123,7 +123,7 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
-                          Full Name <span className="text-[#D4AF37]">*</span>
+                          Full Name <span className="text-[var(--bronze-500)]">*</span>
                         </label>
                         <div className="relative">
                           <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -131,7 +131,7 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                             name="clientName"
                             value={formData.clientName}
                             onChange={handleChange}
-                            className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 pl-9 pr-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                            className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 pl-9 pr-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
                             placeholder="e.g. James Whitmore"
                             required
                           />
@@ -139,13 +139,13 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                       </div>
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
-                          Role / Function <span className="text-[#D4AF37]">*</span>
+                          Role / Function <span className="text-[var(--bronze-500)]">*</span>
                         </label>
                         <select
                           name="role"
                           value={formData.role}
                           onChange={handleChange}
-                          className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 px-3 text-sm text-white focus:outline-none focus:border-[#D4AF37]/60 transition-colors cursor-pointer"
+                          className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors cursor-pointer"
                           required
                         >
                           <option value="" disabled>Select your role...</option>
@@ -163,7 +163,7 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
-                          Company / Organization <span className="text-[#D4AF37]">*</span>
+                          Company / Organization <span className="text-[var(--bronze-500)]">*</span>
                         </label>
                         <div className="relative">
                           <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -171,7 +171,7 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                             name="company"
                             value={formData.company}
                             onChange={handleChange}
-                            className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 pl-9 pr-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                            className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 pl-9 pr-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
                             placeholder="e.g. Northgate Capital Group"
                             required
                           />
@@ -179,13 +179,13 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                       </div>
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
-                          Jurisdiction / Region <span className="text-[#D4AF37]">*</span>
+                          Jurisdiction / Region <span className="text-[var(--bronze-500)]">*</span>
                         </label>
                         <select
                           name="jurisdiction"
                           value={formData.jurisdiction}
                           onChange={handleChange}
-                          className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 px-3 text-sm text-white focus:outline-none focus:border-[#D4AF37]/60 transition-colors cursor-pointer"
+                          className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors cursor-pointer"
                           required
                         >
                           <option value="" disabled>Select jurisdiction...</option>
@@ -207,7 +207,7 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                   <div className="space-y-4 animate-fade-in">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
-                        Risk / Insurance Line Required <span className="text-[#D4AF37]">*</span>
+                        Risk / Insurance Line Required <span className="text-[var(--bronze-500)]">*</span>
                       </label>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {riskCategories.map((cat) => (
@@ -218,7 +218,7 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                             className={`text-left p-3 rounded text-xs font-medium border transition-all cursor-pointer ${
                               formData.riskCategory === cat
                                 ? 'bg-[#C59B27] text-[#0B0D11] border-[#F3E4C8] font-bold'
-                                : 'bg-[#181C24] text-slate-300 border-white/10 hover:border-[#D4AF37]/40'
+                                : 'bg-[var(--bg-dark-850)] text-slate-300 border-[var(--bg-dark-700)] hover:border-[var(--bronze-500)]/40'
                             }`}
                           >
                             {cat}
@@ -237,7 +237,7 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                             name="facilitySize"
                             value={formData.facilitySize}
                             onChange={handleChange}
-                            className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 pl-9 pr-3 text-sm text-white focus:outline-none focus:border-[#D4AF37]/60 transition-colors cursor-pointer"
+                            className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 pl-9 pr-3 text-sm text-white focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors cursor-pointer"
                           >
                             <option value="" disabled>Select range...</option>
                             <option>Under $5M</option>
@@ -256,7 +256,7 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                           name="lenderBank"
                           value={formData.lenderBank}
                           onChange={handleChange}
-                          className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                          className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
                           placeholder="e.g. Barclays Corporate Banking"
                         />
                       </div>
@@ -270,14 +270,14 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
-                          Business Email <span className="text-[#D4AF37]">*</span>
+                          Business Email <span className="text-[var(--bronze-500)]">*</span>
                         </label>
                         <input
                           type="email"
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                          className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
                           placeholder="name@company.com"
                           required
                         />
@@ -291,7 +291,7 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                          className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
                           placeholder="+44 20 7946 0000"
                         />
                       </div>
@@ -305,11 +305,11 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
                         value={formData.message}
                         onChange={handleChange}
                         rows={5}
-                        className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors resize-none"
+                        className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors resize-none"
                         placeholder="Describe your risk transfer objective, the lender covenants you need to satisfy, and any specific policy requirements (e.g. loss payee naming, minimum coverage amounts, coverage territory)..."
                       />
                     </div>
-                    <div className="p-3 rounded bg-[#11141A] border border-[#D4AF37]/20 text-xs text-slate-400">
+                    <div className="p-3 rounded bg-[var(--bg-dark-900)] border border-[var(--bronze-500)]/20 text-xs text-slate-400">
                       <strong className="text-slate-200">Confidentiality Notice:</strong> All information submitted is treated as commercially confidential. Greystone does not share client inquiry details with third parties. A preliminary Non-Disclosure Agreement (NDA) is available on request.
                     </div>
                   </div>
@@ -320,7 +320,7 @@ export const UnderwritingModal: React.FC<UnderwritingModalProps> = ({ isOpen, on
 
           {/* Modal Footer Navigation */}
           {!submitted && (
-            <div className="px-6 py-4 border-t border-white/10 bg-[#11141A] flex items-center justify-between gap-4">
+            <div className="px-6 py-4 border-t border-[var(--bg-dark-700)] bg-[var(--bg-dark-900)] flex items-center justify-between gap-4">
               <div>
                 {step > 1 && (
                   <button

@@ -29,7 +29,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenUnderwritingMo
   return (
     <main className="pt-24">
       {/* Page Header */}
-      <section className="py-20 bg-[#0B0D11] border-b border-[#D4AF37]/20 relative overflow-hidden">
+      <section className="py-20 bg-[var(--bg-dark-950)] border-b border-[var(--bronze-500)]/20 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-5">
@@ -49,7 +49,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenUnderwritingMo
       </section>
 
       {/* Filter Tabs */}
-      <section className="bg-[#11141A] border-b border-white/5 py-4 sticky top-20 z-30">
+      <section className="bg-[var(--bg-dark-900)] border-b border-[var(--bg-dark-800)] py-4 sticky top-20 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-2">
             {INDUSTRY_FILTERS.map(({ id, label }) => (
@@ -59,7 +59,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenUnderwritingMo
                 className={`px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border ${
                   activeFilter === id
                     ? 'bg-[#C59B27] text-[#0B0D11] border-[#F3E4C8]'
-                    : 'bg-[#181C24] text-slate-300 border-white/10 hover:border-[#D4AF37]/40 hover:text-white'
+                    : 'bg-[var(--bg-dark-850)] text-slate-300 border-[var(--bg-dark-700)] hover:border-[var(--bronze-500)]/40 hover:text-white'
                 }`}
               >
                 {label}
@@ -70,7 +70,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenUnderwritingMo
       </section>
 
       {/* Product Grid */}
-      <section className="py-16 bg-[#0B0D11]">
+      <section className="py-16 bg-[var(--bg-dark-950)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {filtered.map((product) => {
@@ -82,10 +82,10 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenUnderwritingMo
                   className="glass-panel glass-panel-hover rounded-xl p-7 text-left space-y-5 group focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/50 cursor-pointer w-full"
                 >
                   <div className="flex items-start justify-between">
-                    <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center group-hover:bg-[#D4AF37]/25 transition-all">
-                      <Icon className="w-6 h-6 text-[#D4AF37]" />
+                    <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/15 border border-[var(--bronze-500)]/30 flex items-center justify-center group-hover:bg-[#D4AF37]/25 transition-all">
+                      <Icon className="w-6 h-6 text-[var(--bronze-500)]" />
                     </div>
-                    <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-[#D4AF37] group-hover:translate-x-1 transition-all" />
+                    <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-[var(--bronze-500)] group-hover:translate-x-1 transition-all" />
                   </div>
                   <div>
                     <h3 className="font-serif-display text-lg font-bold text-white mb-2 group-hover:text-[#F3E4C8] transition-colors">
@@ -96,14 +96,14 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenUnderwritingMo
                   <div className="space-y-2">
                     <h4 className="text-[10px] uppercase font-bold tracking-wider text-slate-500">Lender Benefit:</h4>
                     <div className="bronze-left-border pl-3 py-1">
-                      <p className="text-xs text-[#D4AF37] font-semibold leading-relaxed">{product.lossPayeeBenefit}</p>
+                      <p className="text-xs text-[var(--bronze-500)] font-semibold leading-relaxed">{product.lossPayeeBenefit}</p>
                     </div>
                   </div>
                   <div>
                     <h4 className="text-[10px] uppercase font-bold tracking-wider text-slate-500 mb-2">Target Clients:</h4>
                     <div className="flex flex-wrap gap-1.5">
                       {product.targetClients.slice(0, 2).map((client) => (
-                        <span key={client} className="text-[10px] bg-[#202632] text-slate-300 px-2 py-1 rounded border border-white/10">
+                        <span key={client} className="text-[10px] bg-[var(--bg-dark-800)] text-slate-300 px-2 py-1 rounded border border-[var(--bg-dark-700)]">
                           {client}
                         </span>
                       ))}
@@ -119,15 +119,15 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenUnderwritingMo
       {/* Product Detail Modal */}
       {selectedProduct && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#0B0D11]/85 backdrop-blur-md"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[var(--bg-dark-950)]/85 backdrop-blur-md"
           onClick={(e) => { if (e.target === e.currentTarget) setSelectedProduct(null); }}
         >
-          <div className="w-full max-w-3xl glass-panel rounded-2xl border border-[#D4AF37]/40 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col animate-fade-in">
+          <div className="w-full max-w-3xl glass-panel rounded-2xl border border-[var(--bronze-500)]/40 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col animate-fade-in">
             {/* Modal Header */}
-            <div className="px-7 py-5 border-b border-white/10 bg-[#181C24] flex items-start justify-between relative">
+            <div className="px-7 py-5 border-b border-[var(--bg-dark-700)] bg-[var(--bg-dark-850)] flex items-start justify-between relative">
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
               <div className="flex items-center gap-4">
-                {(() => { const Icon = ICON_MAP[selectedProduct.iconName] ?? ShieldCheck; return <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center shrink-0"><Icon className="w-6 h-6 text-[#D4AF37]" /></div>; })()}
+                {(() => { const Icon = ICON_MAP[selectedProduct.iconName] ?? ShieldCheck; return <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/15 border border-[var(--bronze-500)]/30 flex items-center justify-center shrink-0"><Icon className="w-6 h-6 text-[var(--bronze-500)]" /></div>; })()}
                 <div>
                   <h2 className="font-serif-display text-xl font-bold text-white">{selectedProduct.title}</h2>
                   <span className="badge-bronze text-[10px] mt-1 inline-flex">{selectedProduct.category.replace('-', ' ').toUpperCase()}</span>
@@ -143,8 +143,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenUnderwritingMo
               <p className="text-slate-300 leading-relaxed">{selectedProduct.fullDesc}</p>
 
               {/* Financing Enabler Role */}
-              <div className="p-5 rounded-xl bg-[#202632] border border-[#D4AF37]/40 space-y-2">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-[#D4AF37] flex items-center gap-2">
+              <div className="p-5 rounded-xl bg-[var(--bg-dark-800)] border border-[var(--bronze-500)]/40 space-y-2">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--bronze-500)] flex items-center gap-2">
                   <Coins className="w-4 h-4" /> Financing Enabler Role
                 </h3>
                 <p className="text-slate-200 text-sm leading-relaxed">{selectedProduct.financingEnablerRole}</p>
@@ -157,7 +157,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenUnderwritingMo
                   <ul className="space-y-2">
                     {selectedProduct.coverageScope.map((scope) => (
                       <li key={scope} className="flex items-start gap-2 text-sm text-slate-300">
-                        <Check className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-[var(--bronze-500)] shrink-0 mt-0.5" />
                         {scope}
                       </li>
                     ))}
@@ -170,7 +170,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenUnderwritingMo
                   <ul className="space-y-2">
                     {selectedProduct.targetClients.map((client) => (
                       <li key={client} className="flex items-start gap-2 text-sm text-slate-300">
-                        <Check className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-[var(--bronze-500)] shrink-0 mt-0.5" />
                         {client}
                       </li>
                     ))}
@@ -187,12 +187,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenUnderwritingMo
               {/* Loss Payee Benefit */}
               <div className="bronze-left-border pl-4 py-2">
                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Loss-Payee Benefit:</h3>
-                <p className="text-[#D4AF37] font-semibold text-sm">{selectedProduct.lossPayeeBenefit}</p>
+                <p className="text-[var(--bronze-500)] font-semibold text-sm">{selectedProduct.lossPayeeBenefit}</p>
               </div>
             </div>
 
             {/* Modal Footer CTA */}
-            <div className="px-7 py-4 border-t border-white/10 bg-[#11141A] flex items-center justify-between gap-4">
+            <div className="px-7 py-4 border-t border-[var(--bg-dark-700)] bg-[var(--bg-dark-900)] flex items-center justify-between gap-4">
               <button onClick={() => setSelectedProduct(null)} className="btn-secondary-dark text-xs py-2 px-4 cursor-pointer">← Back</button>
               <button
                 onClick={() => { setSelectedProduct(null); onOpenUnderwritingModal(); }}
@@ -207,7 +207,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenUnderwritingMo
       )}
 
       {/* Services CTA Banner */}
-      <section className="py-16 bg-[#11141A] border-t border-[#D4AF37]/20">
+      <section className="py-16 bg-[var(--bg-dark-900)] border-t border-[var(--bronze-500)]/20">
         <div className="max-w-3xl mx-auto px-4 text-center space-y-5">
           <h2 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
             Can't Find the Exact Structure You Need?

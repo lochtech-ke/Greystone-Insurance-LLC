@@ -32,13 +32,13 @@ export const CollateralCalculator: React.FC<CollateralCalculatorProps> = ({ onOp
   };
 
   return (
-    <div className="glass-panel rounded-2xl p-6 sm:p-10 border border-[#D4AF37]/30 shadow-2xl relative overflow-hidden">
+    <div className="glass-panel rounded-2xl p-6 sm:p-10 border border-[var(--bronze-500)]/30 shadow-2xl relative overflow-hidden">
       
       <div className="absolute top-0 right-0 w-80 h-80 bg-[#D4AF37]/5 blur-[80px] rounded-full pointer-events-none" />
 
-      <div className="flex flex-col lg:flex-row items-start justify-between gap-8 mb-8 border-b border-white/10 pb-6">
+      <div className="flex flex-col lg:flex-row items-start justify-between gap-8 mb-8 border-b border-[var(--bg-dark-700)] pb-6">
         <div>
-          <div className="inline-flex items-center gap-2 bg-[#202632] border border-[#D4AF37]/40 px-3 py-1 rounded text-xs font-bold text-[#D4AF37] uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-2 bg-[var(--bg-dark-800)] border border-[var(--bronze-500)]/40 px-3 py-1 rounded text-xs font-bold text-[var(--bronze-500)] uppercase tracking-wider mb-2">
             <Calculator className="w-3.5 h-3.5" />
             <span>Interactive Financial Instrument Simulator</span>
           </div>
@@ -50,8 +50,8 @@ export const CollateralCalculator: React.FC<CollateralCalculatorProps> = ({ onOp
           </p>
         </div>
 
-        <div className="flex items-center gap-2 bg-[#11141A] p-2 rounded-lg border border-white/10">
-          <Lock className="w-4 h-4 text-[#D4AF37]" />
+        <div className="flex items-center gap-2 bg-[var(--bg-dark-900)] p-2 rounded-lg border border-[var(--bg-dark-700)]">
+          <Lock className="w-4 h-4 text-[var(--bronze-500)]" />
           <span className="text-xs text-slate-300">Basel III Capital Mitigation Standard</span>
         </div>
       </div>
@@ -73,7 +73,7 @@ export const CollateralCalculator: React.FC<CollateralCalculatorProps> = ({ onOp
                 className={`p-3 rounded text-xs font-semibold border transition-all text-left ${
                   assetCategory === 'receivables'
                     ? 'bg-[#C59B27] text-[#0B0D11] border-[#F3E4C8] font-bold'
-                    : 'bg-[#181C24] text-slate-300 border-white/10 hover:border-[#D4AF37]/40'
+                    : 'bg-[var(--bg-dark-850)] text-slate-300 border-[var(--bg-dark-700)] hover:border-[var(--bronze-500)]/40'
                 }`}
               >
                 Trade Receivables
@@ -84,7 +84,7 @@ export const CollateralCalculator: React.FC<CollateralCalculatorProps> = ({ onOp
                 className={`p-3 rounded text-xs font-semibold border transition-all text-left ${
                   assetCategory === 'maritime'
                     ? 'bg-[#C59B27] text-[#0B0D11] border-[#F3E4C8] font-bold'
-                    : 'bg-[#181C24] text-slate-300 border-white/10 hover:border-[#D4AF37]/40'
+                    : 'bg-[var(--bg-dark-850)] text-slate-300 border-[var(--bg-dark-700)] hover:border-[var(--bronze-500)]/40'
                 }`}
               >
                 Maritime Cargo
@@ -95,7 +95,7 @@ export const CollateralCalculator: React.FC<CollateralCalculatorProps> = ({ onOp
                 className={`p-3 rounded text-xs font-semibold border transition-all text-left ${
                   assetCategory === 'property'
                     ? 'bg-[#C59B27] text-[#0B0D11] border-[#F3E4C8] font-bold'
-                    : 'bg-[#181C24] text-slate-300 border-white/10 hover:border-[#D4AF37]/40'
+                    : 'bg-[var(--bg-dark-850)] text-slate-300 border-[var(--bg-dark-700)] hover:border-[var(--bronze-500)]/40'
                 }`}
               >
                 Equipment / Asset
@@ -109,7 +109,7 @@ export const CollateralCalculator: React.FC<CollateralCalculatorProps> = ({ onOp
               <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
                 Asset Portfolio Valuation:
               </span>
-              <span className="font-cinzel text-lg font-bold text-[#D4AF37]">
+              <span className="font-cinzel text-lg font-bold text-[var(--bronze-500)]">
                 {formatCurrency(assetValuation)}
               </span>
             </div>
@@ -120,7 +120,7 @@ export const CollateralCalculator: React.FC<CollateralCalculatorProps> = ({ onOp
               step="5000000"
               value={assetValuation}
               onChange={(e) => setAssetValuation(Number(e.target.value))}
-              className="w-full h-2 bg-[#202632] rounded-lg appearance-none cursor-pointer"
+              className="w-full h-2 bg-[var(--bg-dark-800)] rounded-lg appearance-none cursor-pointer"
             />
             <div className="flex justify-between text-[10px] text-slate-400 mt-1">
               <span>$5M</span>
@@ -146,36 +146,36 @@ export const CollateralCalculator: React.FC<CollateralCalculatorProps> = ({ onOp
               step="5"
               value={lenderLtvTarget}
               onChange={(e) => setLenderLtvTarget(Number(e.target.value))}
-              className="w-full h-2 bg-[#202632] rounded-lg appearance-none cursor-pointer"
+              className="w-full h-2 bg-[var(--bg-dark-800)] rounded-lg appearance-none cursor-pointer"
             />
           </div>
 
           
-          <div className="p-4 rounded-lg bg-[#11141A] border border-[#D4AF37]/20 text-xs space-y-2">
-            <div className="flex items-center gap-1.5 text-[#D4AF37] font-bold">
+          <div className="p-4 rounded-lg bg-[var(--bg-dark-900)] border border-[var(--bronze-500)]/20 text-xs space-y-2">
+            <div className="flex items-center gap-1.5 text-[var(--bronze-500)] font-bold">
               <ShieldCheck className="w-4 h-4" />
               <span>How Greystone Unlocks This Liquidity:</span>
             </div>
             <p className="text-slate-300 leading-relaxed">
-              Standard commercial lenders discount un-insured assets by up to <strong className="text-white">{(standardHaircut * 100).toFixed(0)}%</strong>. When a Greystone Loss-Payee Endorsement is attached, the risk is transferred to A-rated underwriters, reducing haircut loss to <strong className="text-[#D4AF37]">{(greystoneHaircut * 100).toFixed(0)}%</strong>.
+              Standard commercial lenders discount un-insured assets by up to <strong className="text-white">{(standardHaircut * 100).toFixed(0)}%</strong>. When a Greystone Loss-Payee Endorsement is attached, the risk is transferred to A-rated underwriters, reducing haircut loss to <strong className="text-[var(--bronze-500)]">{(greystoneHaircut * 100).toFixed(0)}%</strong>.
             </p>
           </div>
 
         </div>
 
         
-        <div className="lg:col-span-6 bg-[#11141A] rounded-xl p-6 border border-[#D4AF37]/30 flex flex-col justify-between space-y-6">
+        <div className="lg:col-span-6 bg-[var(--bg-dark-900)] rounded-xl p-6 border border-[var(--bronze-500)]/30 flex flex-col justify-between space-y-6">
           <div>
-            <div className="text-xs uppercase font-bold tracking-widest text-slate-400 mb-4 pb-2 border-b border-white/10 flex items-center justify-between">
+            <div className="text-xs uppercase font-bold tracking-widest text-slate-400 mb-4 pb-2 border-b border-[var(--bg-dark-700)] flex items-center justify-between">
               <span>Estimated Credit Base Comparison</span>
-              <span className="text-[#D4AF37] font-normal">Standard vs Greystone</span>
+              <span className="text-[var(--bronze-500)] font-normal">Standard vs Greystone</span>
             </div>
 
             
             <div className="space-y-4">
               
               
-              <div className="p-3 rounded bg-[#181C24] border border-white/5 flex items-center justify-between">
+              <div className="p-3 rounded bg-[var(--bg-dark-850)] border border-[var(--bg-dark-800)] flex items-center justify-between">
                 <div>
                   <span className="text-xs text-slate-400 block">Standard Un-Insured Facility:</span>
                   <span className="text-xs text-slate-500 font-mono">Haircut: {(standardHaircut * 100).toFixed(0)}%</span>
@@ -186,10 +186,10 @@ export const CollateralCalculator: React.FC<CollateralCalculatorProps> = ({ onOp
               </div>
 
               
-              <div className="p-4 rounded bg-[#202632] border border-[#D4AF37]/50 flex items-center justify-between relative overflow-hidden">
+              <div className="p-4 rounded bg-[var(--bg-dark-800)] border border-[var(--bronze-500)]/50 flex items-center justify-between relative overflow-hidden">
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#D4AF37]" />
                 <div>
-                  <span className="text-xs font-bold text-[#D4AF37] block uppercase tracking-wider">
+                  <span className="text-xs font-bold text-[var(--bronze-500)] block uppercase tracking-wider">
                     With Greystone Loss-Payee Policy:
                   </span>
                   <span className="text-xs text-slate-300 font-mono">Haircut: {(greystoneHaircut * 100).toFixed(0)}%</span>
@@ -202,8 +202,8 @@ export const CollateralCalculator: React.FC<CollateralCalculatorProps> = ({ onOp
             </div>
 
             
-            <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-[#2B2312] to-[#1D170A] border border-[#D4AF37]/40 text-center space-y-1">
-              <span className="text-xs text-[#D4AF37] font-bold uppercase tracking-wider block">
+            <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-[#2B2312] to-[#1D170A] border border-[var(--bronze-500)]/40 text-center space-y-1">
+              <span className="text-xs text-[var(--bronze-500)] font-bold uppercase tracking-wider block">
                 Additional Capital Unlocked:
               </span>
               <div className="font-cinzel text-3xl sm:text-4xl font-extrabold text-gradient-bronze">

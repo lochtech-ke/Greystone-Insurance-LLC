@@ -58,7 +58,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenUnderwritingModa
   return (
     <main className="pt-24">
       {/* Page Header */}
-      <section className="py-20 bg-[#0B0D11] border-b border-[#D4AF37]/20 relative overflow-hidden">
+      <section className="py-20 bg-[var(--bg-dark-950)] border-b border-[var(--bronze-500)]/20 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-5">
@@ -78,13 +78,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenUnderwritingModa
       </section>
 
       {/* Main Grid: Form + Offices */}
-      <section className="py-20 bg-[#11141A]">
+      <section className="py-20 bg-[var(--bg-dark-900)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
             {/* Contact Form — Left */}
             <div className="lg:col-span-7">
-              <div className="glass-panel rounded-2xl p-8 border border-[#D4AF37]/30 shadow-2xl relative overflow-hidden">
+              <div className="glass-panel rounded-2xl p-8 border border-[var(--bronze-500)]/30 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
                 
                 {!submitted ? (
@@ -92,7 +92,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenUnderwritingModa
                     <div className="mb-8">
                       <h2 className="font-serif-display text-2xl font-bold text-white">Send a Structured Inquiry</h2>
                       <p className="text-slate-400 text-sm mt-1">For complex risk structuring mandates, use our{' '}
-                        <button onClick={onOpenUnderwritingModal} className="text-[#D4AF37] underline cursor-pointer hover:text-white transition-colors">
+                        <button onClick={onOpenUnderwritingModal} className="text-[var(--bronze-500)] underline cursor-pointer hover:text-white transition-colors">
                           dedicated Underwriting Modal
                         </button>.
                       </p>
@@ -100,36 +100,36 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenUnderwritingModa
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Full Name <span className="text-[#D4AF37]">*</span></label>
+                          <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Full Name <span className="text-[var(--bronze-500)]">*</span></label>
                           <input name="name" value={form.name} onChange={handleChange} required
-                            className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                            className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
                             placeholder="James Whitmore" />
                         </div>
                         <div>
                           <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Company</label>
                           <input name="company" value={form.company} onChange={handleChange}
-                            className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                            className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
                             placeholder="Northgate Capital Group" />
                         </div>
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Email <span className="text-[#D4AF37]">*</span></label>
+                          <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Email <span className="text-[var(--bronze-500)]">*</span></label>
                           <input type="email" name="email" value={form.email} onChange={handleChange} required
-                            className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                            className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
                             placeholder="name@company.com" />
                         </div>
                         <div>
                           <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Phone</label>
                           <input type="tel" name="phone" value={form.phone} onChange={handleChange}
-                            className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors"
+                            className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
                             placeholder="+44 20 7946 0000" />
                         </div>
                       </div>
                       <div>
                         <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Subject / Inquiry Type</label>
                         <select name="subject" value={form.subject} onChange={handleChange}
-                          className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 px-3 text-sm text-white focus:outline-none focus:border-[#D4AF37]/60 transition-colors cursor-pointer">
+                          className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors cursor-pointer">
                           <option value="" disabled>Select inquiry type...</option>
                           <option>Underwriting & Risk Structuring</option>
                           <option>Claims Inquiry</option>
@@ -139,9 +139,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenUnderwritingModa
                         </select>
                       </div>
                       <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Message <span className="text-[#D4AF37]">*</span></label>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Message <span className="text-[var(--bronze-500)]">*</span></label>
                         <textarea name="message" value={form.message} onChange={handleChange} required rows={5}
-                          className="w-full bg-[#181C24] border border-white/10 rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#D4AF37]/60 transition-colors resize-none"
+                          className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors resize-none"
                           placeholder="Describe your inquiry, risk structuring requirement, or question..." />
                       </div>
                       <div className="flex items-start gap-3">
@@ -160,12 +160,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenUnderwritingModa
                   </>
                 ) : (
                   <div className="text-center py-16 space-y-5 animate-fade-in">
-                    <div className="w-16 h-16 rounded-full bg-[#D4AF37]/20 border-2 border-[#D4AF37] flex items-center justify-center mx-auto animate-pulse-glow">
-                      <CheckCircle2 className="w-8 h-8 text-[#D4AF37]" />
+                    <div className="w-16 h-16 rounded-full bg-[#D4AF37]/20 border-2 border-[var(--bronze-500)] flex items-center justify-center mx-auto animate-pulse-glow">
+                      <CheckCircle2 className="w-8 h-8 text-[var(--bronze-500)]" />
                     </div>
                     <h3 className="font-serif-display text-2xl font-bold text-white">Inquiry Received</h3>
                     <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
-                      Thank you for reaching out to Greystone. A member of our team will respond to your inquiry within <strong className="text-[#D4AF37]">48 business hours</strong>. For urgent claims, please contact our direct line at <strong>+44 20 7946 0001</strong>.
+                      Thank you for reaching out to Greystone. A member of our team will respond to your inquiry within <strong className="text-[var(--bronze-500)]">48 business hours</strong>. For urgent claims, please contact our direct line at <strong>+44 20 7946 0001</strong>.
                     </p>
                     <button onClick={() => setSubmitted(false)} className="btn-secondary-dark text-sm cursor-pointer mx-auto">
                       Send Another Message
@@ -179,7 +179,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenUnderwritingModa
             <div className="lg:col-span-5 space-y-5">
               <h2 className="font-serif-display text-2xl font-bold text-white mb-6">Global Risk Hubs</h2>
               {OFFICES.map((office) => (
-                <div key={office.city} className="glass-panel glass-panel-hover rounded-xl p-6 border border-white/10 space-y-4">
+                <div key={office.city} className="glass-panel glass-panel-hover rounded-xl p-6 border border-[var(--bg-dark-700)] space-y-4">
                   <div className="flex items-start justify-between">
                     <div>
                       <h3 className="font-serif-display text-lg font-bold text-white">{office.city}</h3>
@@ -188,19 +188,19 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenUnderwritingModa
                   </div>
                   <div className="space-y-2 text-sm">
                     <div className="flex items-start gap-2 text-slate-300">
-                      <MapPin className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
+                      <MapPin className="w-4 h-4 text-[var(--bronze-500)] shrink-0 mt-0.5" />
                       <span>{office.address}</span>
                     </div>
                     <div className="flex items-center gap-2 text-slate-300">
-                      <Phone className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                      <Phone className="w-4 h-4 text-[var(--bronze-500)] shrink-0" />
                       <a href={`tel:${office.phone}`} className="hover:text-white transition-colors">{office.phone}</a>
                     </div>
                     <div className="flex items-center gap-2 text-slate-300">
-                      <Mail className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                      <Mail className="w-4 h-4 text-[var(--bronze-500)] shrink-0" />
                       <a href={`mailto:${office.email}`} className="hover:text-white transition-colors">{office.email}</a>
                     </div>
                     <div className="flex items-center gap-2 text-slate-400">
-                      <Clock className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                      <Clock className="w-4 h-4 text-[var(--bronze-500)] shrink-0" />
                       <span>{office.hours} ({office.timezone})</span>
                     </div>
                   </div>
@@ -208,22 +208,22 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenUnderwritingModa
               ))}
 
               {/* Emergency Claims */}
-              <div className="p-5 rounded-xl bg-[#1D170A] border border-[#D4AF37]/40 space-y-3">
+              <div className="p-5 rounded-xl bg-[var(--bronze-900)] border border-[var(--bronze-500)]/40 space-y-3">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
-                  <h3 className="font-bold text-[#D4AF37] text-sm uppercase tracking-wider">24/7 Emergency Claims Line</h3>
+                  <h3 className="font-bold text-[var(--bronze-500)] text-sm uppercase tracking-wider">24/7 Emergency Claims Line</h3>
                 </div>
                 <p className="text-slate-300 text-xs leading-relaxed">
                   For urgent claims requiring immediate activation, contact our always-on London claims desk:
                 </p>
-                <a href="tel:+442079460001" className="flex items-center gap-2 font-cinzel text-lg font-bold text-[#D4AF37] hover:text-white transition-colors">
+                <a href="tel:+442079460001" className="flex items-center gap-2 font-cinzel text-lg font-bold text-[var(--bronze-500)] hover:text-white transition-colors">
                   <Phone className="w-5 h-5" />
                   +44 20 7946 0001
                 </a>
               </div>
 
               {/* Regulatory Disclosure */}
-              <div className="p-4 rounded-xl bg-[#11141A] border border-white/5 text-xs text-slate-500 leading-relaxed">
+              <div className="p-4 rounded-xl bg-[var(--bg-dark-900)] border border-[var(--bg-dark-800)] text-xs text-slate-500 leading-relaxed">
                 <strong className="text-slate-300">Regulatory Disclosures:</strong> Greystone Insurance LLC operates in compliance with applicable financial regulatory frameworks including FCA/PRA standards (UK), applicable state regulations (USA), and MAS guidelines (Singapore). Insurance products are subject to regulatory approval in each jurisdiction. Policy terms and conditions apply.
               </div>
             </div>

@@ -108,17 +108,17 @@ export const FinancingTriangleDiagram: React.FC<FinancingTriangleDiagramProps> =
             key={step.num}
             className={`p-5 rounded-xl border transition-all duration-300 cursor-pointer ${
               activeStep === i
-                ? 'bg-[#202632] border-[#D4AF37] shadow-lg'
-                : 'bg-[#181C24] border-white/10 hover:border-[#D4AF37]/40'
+                ? 'bg-[var(--bg-dark-800)] border-[var(--bronze-500)] shadow-lg'
+                : 'bg-[var(--bg-dark-850)] border-[var(--bg-dark-700)] hover:border-[var(--bronze-500)]/40'
             }`}
             onClick={() => setActiveStep(activeStep === i ? null : i)}
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-8 h-8 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/50 flex items-center justify-center text-sm font-black text-[#D4AF37] font-cinzel">
+              <div className="w-8 h-8 rounded-full bg-[#D4AF37]/20 border border-[var(--bronze-500)]/50 flex items-center justify-center text-sm font-black text-[var(--bronze-500)] font-cinzel">
                 {step.num}
               </div>
               <div>
-                <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-wider block">
+                <span className="text-xs font-bold text-[var(--bronze-500)] uppercase tracking-wider block">
                   {step.action}
                 </span>
                 <span className="text-[10px] text-slate-400">
@@ -139,7 +139,7 @@ export const FinancingTriangleDiagram: React.FC<FinancingTriangleDiagramProps> =
       </div>
 
       {/* Legal Qualifier */}
-      <div className="p-4 rounded-lg bg-[#11141A] border border-white/5 text-xs text-slate-500 leading-relaxed">
+      <div className="p-4 rounded-lg bg-[var(--bg-dark-900)] border border-[var(--bg-dark-800)] text-xs text-slate-500 leading-relaxed">
         <strong className="text-slate-300">Regulatory Disclaimer:</strong> The financing mechanics illustrated above represent the structural framework for loss-payee collateral arrangements. Specific outcomes — including collateral recognition, haircut elimination, and credit facility expansion — depend on individual underwriting assessment, jurisdictional regulatory review, lender credit committee approval, and applicable terms and conditions. Greystone makes no guarantee of specific financing outcomes.
       </div>
     </div>
