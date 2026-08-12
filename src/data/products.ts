@@ -1,126 +1,95 @@
-export interface ProductLine {
+export interface ProductInstrument {
   id: string;
+  clauseNumber: string; // 'Clause I' through 'Clause V'
+  romanNumeral: string; // 'I', 'II', 'III', 'IV', 'V'
   title: string;
   shortDesc: string;
-  fullDesc: string;
-  category: 'credit' | 'maritime' | 'liability' | 'asset-backed' | 'advisory';
+  whatItIs: string;
+  whoNeedsIt: string[];
+  whatItUnlocks: string;
+  covenantMechanism: string;
   iconName: string;
-  financingEnablerRole: string;
-  coverageScope: string[];
-  targetClients: string[];
-  covenantMechanics: string;
-  lossPayeeBenefit: string;
 }
 
-export const PRODUCT_LINES: ProductLine[] = [
+export const PRODUCT_INSTRUMENTS: ProductInstrument[] = [
   {
     id: 'credit-protection',
-    title: 'Credit Protection Insurance',
-    shortDesc: 'Satisfy lender collateral covenants by insuring trade receivables and debt obligations against counterparty default.',
-    fullDesc: 'Greystone’s Credit Protection Insurance operates as a tier-1 financial instrument that converts commercial accounts receivable and credit extensions into bankable asset collateral. By transferring insolvency and payment default risk to A-rated underwriting syndicates, corporate borrowers satisfy stringent lender covenants and secure higher borrowing limits.',
-    category: 'credit',
-    iconName: 'ShieldCheck',
-    financingEnablerRole: 'Serves as primary collateral enhancement, allowing commercial banks to decrease regulatory capital reserves under Basel III and increase credit facility leverage by up to 35%.',
-    coverageScope: [
-      'Commercial Insolvency & Buyer Bankruptcy',
-      'Protracted Default (Unpaid Invoices >90 Days)',
-      'Political Risk & Sovereign Currency Inconvertibility',
-      'Cross-Border Buyer Non-Payment'
+    clauseNumber: 'Clause I',
+    romanNumeral: 'I',
+    title: 'Credit Protection Policy',
+    shortDesc: 'Protects lenders and trade creditors against counterparty default on debt facilities or accounts receivable.',
+    whatItIs: 'An institutional risk-transfer policy that insures credit extensions, commercial receivables, and debt repayment obligations against buyer or counterparty insolvency, default, or political risk.',
+    whoNeedsIt: [
+      'Commercial lenders and private debt funds extending credit facilities',
+      'Corporate sellers offering deferred payment terms on trade receivables',
+      'Borrowers seeking higher borrowing base allocations from senior debt syndicates'
     ],
-    targetClients: [
-      'Middle-Market & Enterprise Manufacturers',
-      'Global Commodity Traders & Exporters',
-      'Asset-Based Lenders (ABLs) & Private Debt Funds'
-    ],
-    covenantMechanics: 'The policy includes a direct Loss-Payee Endorsement naming the senior lender. In the event of buyer default, claim proceeds bypass general corporate liquidity and flow directly to service outstanding debt.',
-    lossPayeeBenefit: 'Transform unsecured trade debt into AAA-grade receivables recognized by commercial loan syndicates.'
+    whatItUnlocks: 'Allows lenders and sellers to extend substantial credit terms or loan limits that would otherwise be declined due to counterparty concentration or risk limits.',
+    covenantMechanism: 'Endorsed with a direct Loss-Payee clause naming the lending institution as primary beneficiary, automatically converting insured receivables into Basel III-qualified collateral.',
+    iconName: 'ShieldCheck'
   },
   {
-    id: 'marine-cargo',
-    title: 'Marine Cargo & Logistics Collateral',
-    shortDesc: 'Comprehensive Institute Cargo Clauses (A, B, & C) tailored to de-risk physical transit inventory for trade finance facilities.',
-    fullDesc: 'In transit goods are inherently high-risk assets for trade finance lenders. Greystone Marine Cargo Solutions provide institutional-grade protection under Institute Cargo Clauses A (All Risks), B, and C. Designed specifically to interface with Letters of Credit (LCs) and Warehouse Receipt Financing, our policies unlock liquidity for global supply chains.',
-    category: 'maritime',
-    iconName: 'Ship',
-    financingEnablerRole: 'Fulfills mandatory bank Letter of Credit (LC) insurance requirements and enables collateralized inventory financing while goods are in transit or bonded storage.',
-    coverageScope: [
-      'Institute Cargo Clauses (A) — All Risks Coverage',
-      'Clauses (B) & (C) Major Maritime Casualties',
-      'War, Strikes, Riots & Civil Commotions (WSRCC)',
-      'Stockthroughput (STP) & Warehouse Storage Collateral'
+    id: 'advance-payment-guarantee',
+    clauseNumber: 'Clause II',
+    romanNumeral: 'II',
+    title: 'Advance Payment Guarantee',
+    shortDesc: 'Guarantees the recovery of upfront buyer funds if a contractor or supplier fails to deliver.',
+    whatItIs: 'A financial surety instrument guaranteeing that advance payments or mobilisation deposits made by a buyer/employer to a supplier or contractor will be refunded in full if contractual obligations are unfulfilled.',
+    whoNeedsIt: [
+      'Procurement authorities and corporate buyers paying mobilisation funds',
+      'EPC contractors requiring upfront capital to procure materials',
+      'Manufacturers needing liquidity before starting production'
     ],
-    targetClients: [
-      'International Freight Forwarders & Charterers',
-      'Commodity Trading Houses (Agri, Energy, Metals)',
-      'Trade Finance Syndicate Banks'
-    ],
-    covenantMechanics: 'Full assignment of policy proceeds via Banker’s Loss Payee Clause, providing lenders with immediate subrogation rights upon vessel casualty or transit loss.',
-    lossPayeeBenefit: 'Eliminates inventory haircut discounts applied by lenders during international transit.'
+    whatItUnlocks: 'Enables buyers to confidently disburse upfront payments while providing contractors access to crucial pre-execution liquidity without depleting credit lines.',
+    covenantMechanism: 'Structured as an irrevocable guarantee payable on first demand or upon proven default, protecting buyer capital throughout the pre-delivery phase.',
+    iconName: 'Coins'
   },
   {
-    id: 'product-liability',
-    title: 'Product Liability & Indemnity Collateral',
-    shortDesc: 'Protect enterprise balance sheets from catastrophic product recall or third-party indemnification claims.',
-    fullDesc: 'Enterprise lenders require corporate borrowers to maintain robust liability buffers to prevent sudden operational distress from liability litigation or product recalls. Greystone structures custom Product Liability policies that satisfy institutional debt covenants, ensuring continuous access to working capital credit lines.',
-    category: 'liability',
-    iconName: 'Building2',
-    financingEnablerRole: 'Shields debt service liquidity from unexpected product defect litigation, preserving corporate credit ratings and debt service coverage ratios (DSCR).',
-    coverageScope: [
-      'Global Third-Party Bodily Injury & Property Damage',
-      'Comprehensive Product Recall & Contamination Expenses',
-      'Contractual Indemnity & Customer Warranty Backstop',
-      'Cross-Border Jurisdiction Defense & Settlement'
+    id: 'performance-bonds',
+    clauseNumber: 'Clause III',
+    romanNumeral: 'III',
+    title: 'Performance Bonds',
+    shortDesc: 'Guarantees complete contract execution to agreed terms, compensating project owners upon default.',
+    whatItIs: 'An institutional surety bond assuring the project owner (obligee) that the contractor (principal) will perform and complete the contracted work strictly in accordance with specification and schedule.',
+    whoNeedsIt: [
+      'General contractors bidding on public or private infrastructure tenders',
+      'Project owners requiring financial recourse against non-performance',
+      'Banks financing infrastructure projects requiring contractor bonding'
     ],
-    targetClients: [
-      'Pharmaceutical & Medical Device Manufacturers',
-      'Automotive & Industrial Component OEMs',
-      'Consumer Goods & Technology Enterprises'
-    ],
-    covenantMechanics: 'Structured with lender notice of cancellation and mandatory maintenance covenants tied directly to debt facility agreements.',
-    lossPayeeBenefit: 'Assures debt syndicates that operational legal contingencies will not trigger default covenants.'
+    whatItUnlocks: 'Satisfies mandatory procurement and lender covenants, enabling contractors to qualify for major capital projects without locking up cash as cash collateral.',
+    covenantMechanism: 'Provides an enforceable financial indemnity to the project owner for completion costs, re-tendering expenses, and liquidated damages up to the bond penal sum.',
+    iconName: 'FileCheck'
   },
   {
-    id: 'asset-backed-risk',
-    title: 'Asset-Backed Financial Risk Insurance',
-    shortDesc: 'De-risk tangible equipment, commercial real estate, and infrastructure portfolios to unlock non-recourse debt financing.',
-    fullDesc: 'Asset-backed lending hinges on asset valuation resilience. Greystone’s Asset-Backed Insurance covers residual value loss, physical asset destruction, and operational disruption for high-value machinery, energy infrastructure, and commercial property portfolios.',
-    category: 'asset-backed',
-    iconName: 'Coins',
-    financingEnablerRole: 'Reduces lender loan-to-value (LTV) haircut constraints from 40% down to 10%, unlocking substantial equity liquidity for refinancing or expansion.',
-    coverageScope: [
-      'All-Risk Physical Property & Specialized Machinery Loss',
-      'Residual Asset Value Guarantee (RVG)',
-      'Business Interruption & Loss of Revenue Indemnity',
-      'Environmental Remediation & Decommissioning Protection'
+    id: 'bid-bonds',
+    clauseNumber: 'Clause IV',
+    romanNumeral: 'IV',
+    title: 'Bid Bonds',
+    shortDesc: 'Assures tender issuers that the winning bidder will execute the contract and post required bonds.',
+    whatItIs: 'A preliminary surety instrument submitted alongside a tender offer, guaranteeing that if awarded the contract, the bidder will enter into the contract and supply requisite performance security.',
+    whoNeedsIt: [
+      'Engineering and construction firms submitting tender bids',
+      'Government agencies and corporate procurement committees',
+      'Trade suppliers bidding on institutional procurement contracts'
     ],
-    targetClients: [
-      'Infrastructure Capital & Energy Transition Developers',
-      'Equipment Leasing & Fleet Management Firms',
-      'Commercial Real Estate Investment Trusts (REITs)'
-    ],
-    covenantMechanics: 'Includes first-loss payee status, joint-loss adjusting representation, and lender mortgage/security interest clauses.',
-    lossPayeeBenefit: 'Enables high-LTV non-recourse debt placement for heavy capital equipment and real estate.'
+    whatItUnlocks: 'Enables contractors to bid on multiple high-value tenders simultaneously without tying up working capital or bank credit lines.',
+    covenantMechanism: 'Compensates the procuring entity for the cost difference of re-awarding to the second-highest bidder if the selected bidder withdraws or fails to execute.',
+    iconName: 'Award'
   },
   {
-    id: 'corporate-advisory',
-    title: 'Corporate Risk Advisory & Capital Structuring',
-    shortDesc: 'Bespoke financial risk engineering to align corporate insurance programs with bank syndicated loan documentation.',
-    fullDesc: 'Insurance programs and debt covenants are frequently misaligned, leaving dangerous gaps in lender protection or resulting in redundant premium spend. Greystone’s Advisory division reviews corporate debt covenants, audits existing policies, and architects unified risk transfer structures that optimize both financing terms and insurance spend.',
-    category: 'advisory',
-    iconName: 'FileText',
-    financingEnablerRole: 'Directly negotiates policy language with bank credit committees, eliminating restrictive insurance-related borrowing conditions.',
-    coverageScope: [
-      'Lender Covenant & Loan Agreement Compliance Audits',
-      'Structured Risk Transfer & Captive Insurance Feasibility',
-      'Specialized Loss-Payee & Subrogation Clause Engineering',
-      'Syndicated Loan Risk Verification & Certification'
+    id: 'marine-all-risk',
+    clauseNumber: 'Clause V',
+    romanNumeral: 'V',
+    title: 'Marine & All Risk Insurance',
+    shortDesc: 'Comprehensive transit and cargo indemnity satisfying international trade finance standards.',
+    whatItIs: 'Institutional marine cargo and logistics insurance covering raw materials, finished goods, and equipment against physical loss or damage across ocean, air, and overland transit routes.',
+    whoNeedsIt: [
+      'Commodity trading enterprises and international importers/exporters',
+      'Trade finance banks issuing Letters of Credit (LCs)',
+      'Logistics operators managing cross-border supply chain movements'
     ],
-    targetClients: [
-      'Chief Financial Officers & Corporate Treasurers',
-      'Private Equity Sponsor Portfolio Companies',
-      'Project Finance Arrangers & Advisory Desks'
-    ],
-    covenantMechanics: 'Greystone issues formal Underwriting Certificates of Financial Collateral directly to bank administrative agents.',
-    lossPayeeBenefit: 'Harmonizes enterprise risk management with debt facility covenants to streamline loan closings.'
+    whatItUnlocks: 'Satisfies mandatory Letter of Credit (LC) and warehouse financing covenants, transforming inventory in transit into acceptable bank collateral.',
+    covenantMechanism: 'Underwritten under Institute Cargo Clauses (A), with Loss-Payee assignment directly to the trade finance lender to eliminate inventory haircuts.',
+    iconName: 'Ship'
   }
 ];

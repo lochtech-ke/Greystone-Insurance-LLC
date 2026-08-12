@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import logoSvg from '../assets/logo-greystone.svg';
-import { Menu, X, ArrowRight, FileCheck } from 'lucide-react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
+import logoDarkSvg from '../assets/logo-greystone-dark.svg';
+import { Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
 
-interface HeaderProps {
-  currentTab: string;
-  onNavigate: (tab: string) => void;
-  onOpenUnderwritingModal: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ currentTab, onNavigate, onOpenUnderwritingModal }) => {
+export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,133 +17,148 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, onNavigate, onOpenUn
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  /* Close mobile menu on route change */
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About Greystone' },
-    { id: 'services', label: 'Services & Products' },
-    { id: 'unlocking-financing', label: 'Unlocking Financing', badge: 'Flagship' },
-    { id: 'claims', label: 'Claims' },
-    { id: 'insights', label: 'Insights' },
-    { id: 'contact', label: 'Contact' },
+    { path: '/', label: 'Home' },
+    { path: '/about', label: 'About Greystone' },
+    { path: '/services', label: 'Services & Products' },
+    { path: '/unlocking-financing', label: 'Unlocking Financing', flag: true },
+    { path: '/contact', label: 'Contact' },
   ];
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-[var(--bg-dark-950)]/90 backdrop-blur-md border-b border-[var(--bronze-500)]/20 shadow-2xl py-3' 
-          : 'bg-gradient-to-b from-[#0B0D11]/95 to-[#0B0D11]/60 py-4 border-b border-[var(--bg-dark-800)]'
+        isScrolled
+          ? 'bg-[var(--ink)] border-b border-[var(--rule-dark)] shadow-lg py-3'
+          : 'bg-[var(--ink-overlay)] border-b border-[var(--rule-dark)] py-4'
       }`}
+      style={{ backdropFilter: isScrolled ? 'none' : 'blur(12px)' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container">
         <div className="flex items-center justify-between">
           
-          
-          <button 
-            onClick={() => { onNavigate('home'); setMobileMenuOpen(false); }}
-            className="flex items-center gap-3 text-left focus:outline-none group cursor-pointer"
+          {/* Logo */}
+          <Link 
+            to="/" 
+            className="flex items-center focus-visible:outline-none shrink-0"
+            aria-label="Greystone Insurance LLC — Return to homepage"
           >
-            <div className="h-11 w-auto max-w-[280px] sm:max-w-[340px] transition-transform duration-300 group-hover:scale-[1.02]">
-              <img 
-                src={logoSvg} 
-                alt="Greystone Insurance LLC Logo — Your Risk. Our Responsibility." 
-                className="h-full w-auto object-contain"
-              />
-            </div>
-          </button>
+            <img
+              src={logoDarkSvg}
+              alt="Greystone Insurance LLC"
+              className="h-10 sm:h-11 w-auto object-contain"
+            />
+          </Link>
 
-          
-          <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-            {navItems.map((item) => {
-              const isActive = currentTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => onNavigate(item.id)}
-                  className={`px-3 py-2 rounded text-sm font-medium transition-all duration-200 relative flex items-center gap-1.5 cursor-pointer ${
-                    isActive 
-                      ? 'text-[var(--bronze-500)] font-semibold bg-[var(--bg-dark-800)]/80 border border-[var(--bronze-500)]/30' 
-                      : 'text-slate-300 hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  {item.label}
-                  {item.badge && (
-                    <span className="bg-[#C59B27]/20 text-[var(--bronze-500)] text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded border border-[var(--bronze-500)]/30 animate-pulse">
-                      {item.badge}
-                    </span>
-                  )}
-                </button>
-              );
-            })}
+          {/* Desktop Navigation — uses sans-serif for nav text, mono for badge */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5" aria-label="Main navigation">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.path === '/'}
+                className={({ isActive }) =>
+                  `px-3.5 py-2 rounded font-sans text-[0.9375rem] font-medium transition-all duration-200 flex items-center gap-2 ${
+                    isActive
+                      ? 'text-[var(--bronze-light)] font-semibold border-b-2 border-[var(--bronze-light)]'
+                      : 'text-[var(--cream)] opacity-80 hover:opacity-100 hover:bg-white/5'
+                  }`
+                }
+              >
+                <span>{item.label}</span>
+                {item.flag && (
+                  <span
+                    className="mono-label px-1.5 py-0.5 rounded border border-[var(--bronze-light)] text-[var(--bronze-light)]"
+                    style={{ fontSize: '0.625rem' }}
+                  >
+                    Flagship
+                  </span>
+                )}
+              </NavLink>
+            ))}
           </nav>
 
-          
-          <div className="hidden lg:flex items-center space-x-3">
-            <button
-              onClick={onOpenUnderwritingModal}
-              className="btn-primary-bronze text-xs uppercase font-bold tracking-wider py-2.5 px-4 rounded shadow-lg flex items-center gap-2 group cursor-pointer"
+          {/* Desktop CTA — uses standardized .btn system */}
+          <div className="hidden lg:flex items-center">
+            <Link
+              to="/talk-to-an-underwriter"
+              className="btn btn-primary btn-sm"
             >
-              <FileCheck className="w-4 h-4 text-[#0B0D11]" />
+              <ShieldCheck className="w-4 h-4" />
               <span>Talk to an Underwriter</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </button>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
 
-          
+          {/* Mobile Controls */}
           <div className="lg:hidden flex items-center gap-2">
-            <button
-              onClick={onOpenUnderwritingModal}
-              className="btn-primary-bronze text-[11px] uppercase font-bold px-2.5 py-1.5 rounded flex items-center gap-1"
+            <Link
+              to="/talk-to-an-underwriter"
+              className="btn btn-primary btn-sm px-3 py-1.5"
+              style={{ fontSize: '0.6875rem' }}
             >
-              <span>Underwriter</span>
-            </button>
+              Underwriter
+            </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-md text-slate-300 hover:text-white hover:bg-white/10 focus:outline-none"
-              aria-label="Toggle Navigation Menu"
+              className="p-2 rounded-md transition-colors text-[var(--cream)] hover:bg-white/10"
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-[var(--bronze-500)]" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6 text-[var(--bronze-light)]" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
 
         </div>
       </div>
 
-      
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[var(--bg-dark-900)] border-b border-[var(--bronze-500)]/30 px-4 pt-3 pb-6 space-y-2 shadow-2xl animate-fade-in">
+        <div
+          className="lg:hidden bg-[var(--ink)] border-b border-[var(--rule-dark)] px-4 pt-3 pb-6 space-y-1.5 shadow-2xl"
+          style={{ animation: 'fadeInUp 200ms var(--ease-out)' }}
+        >
           {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => {
-                onNavigate(item.id);
-                setMobileMenuOpen(false);
-              }}
-              className={`w-full text-left px-4 py-3 rounded-md text-base font-medium flex items-center justify-between ${
-                currentTab === item.id 
-                  ? 'bg-[var(--bg-dark-800)] text-[var(--bronze-500)] border-l-4 border-[var(--bronze-500)]' 
-                  : 'text-slate-200 hover:bg-white/5'
-              }`}
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.path === '/'}
+              className={({ isActive }) =>
+                `w-full text-left px-4 py-3 rounded font-sans text-base font-medium flex items-center justify-between ${
+                  isActive
+                    ? 'bg-[var(--ink-light)] text-[var(--bronze-light)] border-l-[3px] border-[var(--bronze-light)]'
+                    : 'text-[var(--cream)] hover:bg-white/5'
+                }`
+              }
             >
               <span>{item.label}</span>
-              {item.badge && (
-                <span className="bg-[#C59B27]/20 text-[var(--bronze-500)] text-xs px-2 py-0.5 rounded border border-[var(--bronze-500)]/30">
-                  {item.badge}
+              {item.flag && (
+                <span
+                  className="mono-label px-2 py-0.5 rounded border border-[var(--bronze-light)] text-[var(--bronze-light)]"
+                  style={{ fontSize: '0.625rem' }}
+                >
+                  Flagship
                 </span>
               )}
-            </button>
+            </NavLink>
           ))}
-          <div className="pt-4 border-t border-[var(--bg-dark-700)]">
-            <button
-              onClick={() => {
-                onOpenUnderwritingModal();
-                setMobileMenuOpen(false);
-              }}
-              className="w-full btn-primary-bronze justify-center py-3 text-sm font-bold uppercase tracking-wider"
+          <div className="pt-4 border-t border-[var(--rule-dark)]">
+            <Link
+              to="/talk-to-an-underwriter"
+              className="w-full btn btn-primary justify-center py-3"
             >
-              <FileCheck className="w-4 h-4" />
+              <ShieldCheck className="w-4 h-4" />
               <span>Talk to an Underwriter</span>
-            </button>
+            </Link>
           </div>
         </div>
       )}

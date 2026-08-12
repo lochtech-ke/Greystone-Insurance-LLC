@@ -1,236 +1,272 @@
 import React, { useState } from 'react';
-import { MapPin, Mail, Phone, Clock, Shield, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
+import { ScrollReveal } from '../components/ScrollReveal';
+import { Mail, Phone, MapPin, Send, CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
 
-interface ContactPageProps {
-  onOpenUnderwritingModal: () => void;
-}
-
-const OFFICES = [
-  {
-    city: 'London',
-    region: 'EMEA Hub',
-    address: 'Leadenhall Street, City of London, EC3V 4AB',
-    phone: '+44 20 7946 0100',
-    email: 'london@greystoneinsurance.com',
-    timezone: 'GMT / BST',
-    hours: 'Mon–Fri 08:00–18:00',
-  },
-  {
-    city: 'New York',
-    region: 'Americas Hub',
-    address: '100 Wall Street, Financial District, New York, NY 10005',
-    phone: '+1 212 555 0100',
-    email: 'newyork@greystoneinsurance.com',
-    timezone: 'EST / EDT',
-    hours: 'Mon–Fri 08:00–18:00',
-  },
-  {
-    city: 'Singapore',
-    region: 'Asia-Pacific Hub',
-    address: 'Marina Bay Financial Centre, 018981, Singapore',
-    phone: '+65 6388 0100',
-    email: 'singapore@greystoneinsurance.com',
-    timezone: 'SGT (UTC+8)',
-    hours: 'Mon–Fri 09:00–18:00',
-  },
-];
-
-export const ContactPage: React.FC<ContactPageProps> = ({ onOpenUnderwritingModal }) => {
+export const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: '', company: '', role: '', email: '', phone: '',
-    subject: '', message: '', consent: false
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    inquiryType: 'General',
+    message: ''
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    setForm(f => ({
-      ...f,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
-    }));
+  const validate = () => {
+    const errs: Record<string, string> = {};
+    if (!formData.name.trim()) errs.name = 'Full name is required';
+    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
+      errs.email = 'Enter a valid email address';
+    }
+    if (!formData.message.trim()) errs.message = 'Please enter your message';
+    return errs;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs);
+      return;
+    }
+    setErrors({});
     setSubmitted(true);
   };
 
   return (
-    <main className="pt-24">
-      {/* Page Header */}
-      <section className="py-20 bg-[var(--bg-dark-950)] border-b border-[var(--bronze-500)]/20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl space-y-5">
-            <div className="badge-bronze">
-              <Mail className="w-3.5 h-3.5" />
-              <span>Contact Greystone</span>
-            </div>
-            <h1 className="font-serif-display text-4xl sm:text-5xl font-bold text-white leading-tight">
-              Reach the{' '}
-              <span className="text-gradient-bronze">Greystone Risk Desk.</span>
-            </h1>
-            <p className="text-slate-300 text-lg leading-relaxed">
-              Our global underwriting and risk structuring desks are available across London, New York, and Singapore. For institutional inquiries, we respond within 48 business hours.
-            </p>
-          </div>
-        </div>
-      </section>
+    <>
+      <SEOHead
+        title="Contact Greystone Insurance LLC"
+        description="General inquiries and corporate contact desk for Greystone Insurance LLC."
+      />
 
-      {/* Main Grid: Form + Offices */}
-      <section className="py-20 bg-[var(--bg-dark-900)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            
-            {/* Contact Form — Left */}
-            <div className="lg:col-span-7">
-              <div className="glass-panel rounded-2xl p-8 border border-[var(--bronze-500)]/30 shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
-                
-                {!submitted ? (
-                  <>
-                    <div className="mb-8">
-                      <h2 className="font-serif-display text-2xl font-bold text-white">Send a Structured Inquiry</h2>
-                      <p className="text-slate-400 text-sm mt-1">For complex risk structuring mandates, use our{' '}
-                        <button onClick={onOpenUnderwritingModal} className="text-[var(--bronze-500)] underline cursor-pointer hover:text-white transition-colors">
-                          dedicated Underwriting Modal
-                        </button>.
+      <main className="pt-20">
+        
+        {/* Page Header */}
+        <section className="section-dark guilloche-bg py-20 border-b border-[var(--rule-dark)]">
+          <div className="container">
+            <div className="max-w-3xl space-y-4">
+              <ScrollReveal>
+                <span className="mono-label text-[var(--bronze-light)]">Corporate Desk</span>
+                <h1 className="font-serif text-4xl sm:text-5xl font-bold text-[var(--cream)]">
+                  General Inquiries &amp; Contact
+                </h1>
+                <p className="body-lg text-[var(--cream)] opacity-90 leading-relaxed mt-2">
+                  For general corporate correspondence, media inquiries, or institutional partnerships.
+                </p>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+
+        {/* Primary Route Notice to Underwriting Page */}
+        <section className="bg-[var(--paper-warm)] border-b border-[var(--rule-light)] py-4">
+          <div className="container">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 bg-white border border-[var(--rule-light)] corner-brackets shadow-sm">
+              <div className="flex items-center gap-3.5">
+                <ShieldCheck className="w-6 h-6 text-[var(--bronze)] shrink-0" />
+                <p className="body-sm text-[var(--charcoal)] text-xs sm:text-sm">
+                  <strong className="font-semibold text-[var(--charcoal)]">Seeking Transaction or Policy Structuring?</strong> If you have a specific credit facility, tender, or shipment requiring underwriting, please use our dedicated Underwriting Desk.
+                </p>
+              </div>
+              <Link
+                to="/talk-to-an-underwriter"
+                className="btn btn-primary btn-sm shrink-0"
+              >
+                <span>Talk to an Underwriter</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Main Content: Form + Office Placeholders */}
+        <section className="section bg-[var(--paper)]">
+          <div className="container">
+            <div className="grid-2 gap-12">
+              
+              {/* General Contact Form */}
+              <ScrollReveal>
+                <div className="space-y-6">
+                  <div>
+                    <h2 className="font-serif text-2xl font-bold mb-2">General Inquiry Form</h2>
+                    <p className="body-sm text-[var(--text-muted-light)] text-xs">
+                      Complete the fields below for non-underwriting inquiries. All submissions are handled confidentially.
+                    </p>
+                  </div>
+
+                  {submitted ? (
+                    <div className="p-8 bg-[var(--paper-warm)] border border-[var(--bronze)] text-center space-y-4 corner-brackets">
+                      <CheckCircle2 className="w-12 h-12 text-[var(--bronze)] mx-auto" />
+                      <h3 className="font-serif text-xl font-semibold">Message Received</h3>
+                      <p className="body-sm text-[var(--text-muted-light)] text-xs max-w-sm mx-auto">
+                        Thank you for contacting Greystone Insurance LLC. Our corporate team will review your message and respond promptly.
                       </p>
+                      <button
+                        onClick={() => { setSubmitted(false); setFormData({ name: '', company: '', email: '', phone: '', inquiryType: 'General', message: '' }); }}
+                        className="btn btn-secondary btn-sm"
+                      >
+                        Send Another Message
+                      </button>
                     </div>
-                    <form onSubmit={handleSubmit} className="space-y-5">
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Full Name <span className="text-[var(--bronze-500)]">*</span></label>
-                          <input name="name" value={form.name} onChange={handleChange} required
-                            className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
-                            placeholder="James Whitmore" />
+                        <div className="form-group">
+                          <label className="form-label" htmlFor="name">Your Name *</label>
+                          <input
+                            id="name"
+                            type="text"
+                            className={`form-input ${errors.name ? 'error' : ''}`}
+                            placeholder="e.g. Eleanor Vance"
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          />
+                          {errors.name && <span className="form-error">{errors.name}</span>}
                         </div>
-                        <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Company</label>
-                          <input name="company" value={form.company} onChange={handleChange}
-                            className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
-                            placeholder="Northgate Capital Group" />
+
+                        <div className="form-group">
+                          <label className="form-label" htmlFor="company">Company / Institution</label>
+                          <input
+                            id="company"
+                            type="text"
+                            className="form-input"
+                            placeholder="e.g. Apex Holdings"
+                            value={formData.company}
+                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                          />
                         </div>
                       </div>
+
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Email <span className="text-[var(--bronze-500)]">*</span></label>
-                          <input type="email" name="email" value={form.email} onChange={handleChange} required
-                            className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
-                            placeholder="name@company.com" />
+                        <div className="form-group">
+                          <label className="form-label" htmlFor="email">Email Address *</label>
+                          <input
+                            id="email"
+                            type="email"
+                            className={`form-input ${errors.email ? 'error' : ''}`}
+                            placeholder="e.g. e.vance@apexholdings.com"
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          />
+                          {errors.email && <span className="form-error">{errors.email}</span>}
                         </div>
-                        <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Phone</label>
-                          <input type="tel" name="phone" value={form.phone} onChange={handleChange}
-                            className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors"
-                            placeholder="+44 20 7946 0000" />
+
+                        <div className="form-group">
+                          <label className="form-label" htmlFor="phone">Phone Number</label>
+                          <input
+                            id="phone"
+                            type="tel"
+                            className="form-input"
+                            placeholder="+1 (555) 000-0000"
+                            value={formData.phone}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          />
                         </div>
                       </div>
-                      <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Subject / Inquiry Type</label>
-                        <select name="subject" value={form.subject} onChange={handleChange}
-                          className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors cursor-pointer">
-                          <option value="" disabled>Select inquiry type...</option>
-                          <option>Underwriting & Risk Structuring</option>
-                          <option>Claims Inquiry</option>
-                          <option>Regulatory Documentation</option>
-                          <option>Business Development & Partnerships</option>
-                          <option>General Corporate Inquiry</option>
+
+                      <div className="form-group">
+                        <label className="form-label" htmlFor="inquiryType">Inquiry Type</label>
+                        <select
+                          id="inquiryType"
+                          className="form-select"
+                          value={formData.inquiryType}
+                          onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
+                        >
+                          <option value="General">General Inquiry</option>
+                          <option value="Partnership">Institutional Partnership</option>
+                          <option value="Media">Media &amp; Press</option>
+                          <option value="Other">Other</option>
                         </select>
                       </div>
-                      <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Message <span className="text-[var(--bronze-500)]">*</span></label>
-                        <textarea name="message" value={form.message} onChange={handleChange} required rows={5}
-                          className="w-full bg-[var(--bg-dark-850)] border border-[var(--bg-dark-700)] rounded-md py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[var(--bronze-500)]/60 transition-colors resize-none"
-                          placeholder="Describe your inquiry, risk structuring requirement, or question..." />
+
+                      <div className="form-group">
+                        <label className="form-label" htmlFor="message">Message *</label>
+                        <textarea
+                          id="message"
+                          className={`form-textarea ${errors.message ? 'error' : ''}`}
+                          placeholder="How can we assist you?"
+                          value={formData.message}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        />
+                        {errors.message && <span className="form-error">{errors.message}</span>}
                       </div>
-                      <div className="flex items-start gap-3">
-                        <input type="checkbox" name="consent" checked={form.consent} onChange={handleChange}
-                          className="mt-1 cursor-pointer accent-[#D4AF37]" id="consent-check" />
-                        <label htmlFor="consent-check" className="text-xs text-slate-400 cursor-pointer leading-relaxed">
-                          I consent to Greystone Insurance LLC processing my information to respond to this inquiry. I understand that information provided is treated as commercially confidential. See our Privacy Policy for details.
-                        </label>
-                      </div>
-                      <button type="submit" className="btn-primary-bronze w-full justify-center py-3.5 text-sm uppercase font-bold tracking-wider cursor-pointer">
-                        <Shield className="w-4 h-4" />
+
+                      <button
+                        type="submit"
+                        className="btn btn-primary w-full py-3.5"
+                      >
+                        <Send className="w-4 h-4" />
                         <span>Submit Inquiry</span>
-                        <ArrowRight className="w-4 h-4" />
                       </button>
                     </form>
-                  </>
-                ) : (
-                  <div className="text-center py-16 space-y-5 animate-fade-in">
-                    <div className="w-16 h-16 rounded-full bg-[#D4AF37]/20 border-2 border-[var(--bronze-500)] flex items-center justify-center mx-auto animate-pulse-glow">
-                      <CheckCircle2 className="w-8 h-8 text-[var(--bronze-500)]" />
-                    </div>
-                    <h3 className="font-serif-display text-2xl font-bold text-white">Inquiry Received</h3>
-                    <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
-                      Thank you for reaching out to Greystone. A member of our team will respond to your inquiry within <strong className="text-[var(--bronze-500)]">48 business hours</strong>. For urgent claims, please contact our direct line at <strong>+44 20 7946 0001</strong>.
+                  )}
+                </div>
+              </ScrollReveal>
+
+              {/* Office Details & Map Placeholder — PLACEHOLDER FLAGGED */}
+              <ScrollReveal delay={150}>
+                <div className="space-y-8">
+                  <div>
+                    <h2 className="font-serif text-2xl font-bold mb-2">Corporate Headquarters</h2>
+                    <p className="body-sm text-[var(--text-muted-light)] text-xs">
+                      Official contact details and physical address information.
                     </p>
-                    <button onClick={() => setSubmitted(false)} className="btn-secondary-dark text-sm cursor-pointer mx-auto">
-                      Send Another Message
-                    </button>
                   </div>
-                )}
-              </div>
-            </div>
 
-            {/* Office Information — Right */}
-            <div className="lg:col-span-5 space-y-5">
-              <h2 className="font-serif-display text-2xl font-bold text-white mb-6">Global Risk Hubs</h2>
-              {OFFICES.map((office) => (
-                <div key={office.city} className="glass-panel glass-panel-hover rounded-xl p-6 border border-[var(--bg-dark-700)] space-y-4">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="font-serif-display text-lg font-bold text-white">{office.city}</h3>
-                      <span className="badge-bronze text-[10px] mt-1 inline-flex">{office.region}</span>
+                  <div className="placeholder-flag space-y-4">
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-5 h-5 text-[var(--bronze)] shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="block text-xs font-mono text-[var(--charcoal)] uppercase">Physical Address</strong>
+                        <p className="body-sm text-xs text-[var(--text-muted-light)]">
+                          Official corporate address details pending confirmation from management.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <Phone className="w-5 h-5 text-[var(--bronze)] shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="block text-xs font-mono text-[var(--charcoal)] uppercase">Telephone</strong>
+                        <p className="body-sm text-xs text-[var(--text-muted-light)]">
+                          Direct phone lines pending confirmation.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <Mail className="w-5 h-5 text-[var(--bronze)] shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="block text-xs font-mono text-[var(--charcoal)] uppercase">Email Desk</strong>
+                        <p className="body-sm text-xs text-[var(--text-muted-light)]">
+                          Official email contacts pending confirmation.
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-start gap-2 text-slate-300">
-                      <MapPin className="w-4 h-4 text-[var(--bronze-500)] shrink-0 mt-0.5" />
-                      <span>{office.address}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-slate-300">
-                      <Phone className="w-4 h-4 text-[var(--bronze-500)] shrink-0" />
-                      <a href={`tel:${office.phone}`} className="hover:text-white transition-colors">{office.phone}</a>
-                    </div>
-                    <div className="flex items-center gap-2 text-slate-300">
-                      <Mail className="w-4 h-4 text-[var(--bronze-500)] shrink-0" />
-                      <a href={`mailto:${office.email}`} className="hover:text-white transition-colors">{office.email}</a>
-                    </div>
-                    <div className="flex items-center gap-2 text-slate-400">
-                      <Clock className="w-4 h-4 text-[var(--bronze-500)] shrink-0" />
-                      <span>{office.hours} ({office.timezone})</span>
-                    </div>
+
+                  {/* Map Embed Placeholder */}
+                  <div className="border border-[var(--rule-light)] bg-[var(--paper-warm)] p-8 text-center space-y-2 corner-brackets">
+                    <MapPin className="w-8 h-8 text-[var(--bronze)] mx-auto opacity-70" />
+                    <span className="mono-label text-xs block text-[var(--bronze)]">Interactive Map Embed</span>
+                    <p className="body-sm text-xs text-[var(--text-muted-light)] max-w-xs mx-auto">
+                      Map embed will be integrated upon location confirmation.
+                    </p>
                   </div>
+
                 </div>
-              ))}
+              </ScrollReveal>
 
-              {/* Emergency Claims */}
-              <div className="p-5 rounded-xl bg-[var(--bronze-900)] border border-[var(--bronze-500)]/40 space-y-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
-                  <h3 className="font-bold text-[var(--bronze-500)] text-sm uppercase tracking-wider">24/7 Emergency Claims Line</h3>
-                </div>
-                <p className="text-slate-300 text-xs leading-relaxed">
-                  For urgent claims requiring immediate activation, contact our always-on London claims desk:
-                </p>
-                <a href="tel:+442079460001" className="flex items-center gap-2 font-cinzel text-lg font-bold text-[var(--bronze-500)] hover:text-white transition-colors">
-                  <Phone className="w-5 h-5" />
-                  +44 20 7946 0001
-                </a>
-              </div>
-
-              {/* Regulatory Disclosure */}
-              <div className="p-4 rounded-xl bg-[var(--bg-dark-900)] border border-[var(--bg-dark-800)] text-xs text-slate-500 leading-relaxed">
-                <strong className="text-slate-300">Regulatory Disclosures:</strong> Greystone Insurance LLC operates in compliance with applicable financial regulatory frameworks including FCA/PRA standards (UK), applicable state regulations (USA), and MAS guidelines (Singapore). Insurance products are subject to regulatory approval in each jurisdiction. Policy terms and conditions apply.
-              </div>
             </div>
-
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+
+      </main>
+    </>
   );
 };

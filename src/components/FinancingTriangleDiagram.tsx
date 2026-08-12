@@ -1,146 +1,106 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { ArrowRight, ShieldCheck, Landmark, Building, Lock } from 'lucide-react';
 
-
-interface FinancingTriangleDiagramProps {}
-
-export const FinancingTriangleDiagram: React.FC<FinancingTriangleDiagramProps> = () => {
-  const [activeStep, setActiveStep] = useState<number | null>(null);
-
-  const steps = [
-    {
-      num: 1,
-      from: 'INSURED',
-      fromSub: 'Corporate Borrower / Asset Owner',
-      to: 'GREYSTONE',
-      toSub: 'Underwriting & Risk Engineering',
-      action: 'Risk Transfer',
-      desc: 'The Insured transfers financial, property, or credit default risk to Greystone through a bespoke insurance policy structured to meet lender documentation requirements.',
-      color: '#D4AF37',
-    },
-    {
-      num: 2,
-      from: 'GREYSTONE',
-      fromSub: 'Underwriting & Risk Engineering',
-      to: 'LENDER',
-      toSub: 'Bank / Syndicate / Debt Arranger',
-      action: 'Loss-Payee Endorsement Issued',
-      desc: 'Greystone issues a Loss-Payee Endorsement directly naming the Lender. In case of insured loss, claim proceeds are remitted directly to the bank, not to the borrower.',
-      color: '#C59B27',
-    },
-    {
-      num: 3,
-      from: 'LENDER',
-      fromSub: 'Bank / Syndicate / Debt Arranger',
-      to: 'INSURED',
-      toSub: 'Corporate Borrower / Asset Owner',
-      action: 'Capital Released & Credit Expanded',
-      desc: 'With the Greystone Loss-Payee policy in place, the Lender accepts the asset at full collateral value (eliminating haircuts), approves the debt facility, and releases capital to the Insured.',
-      color: '#8B6D36',
-    },
-  ];
-
+export const FinancingTriangleDiagram: React.FC = () => {
   return (
-    <div className="space-y-10">
-      {/* Triangle SVG Diagram */}
-      <div className="relative flex items-center justify-center">
-        <svg viewBox="0 0 620 420" className="w-full max-w-2xl" role="img" aria-label="Insurer-Insured-Lender financing triangle flow diagram">
-          <defs>
-            <linearGradient id="arrowGold" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#D4AF37" />
-              <stop offset="100%" stopColor="#C59B27" />
-            </linearGradient>
-            <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-              <polygon points="0 0, 8 3, 0 6" fill="#D4AF37" />
-            </marker>
-          </defs>
-
-          {/* Background subtle grid */}
-          <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
-            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(212,175,55,0.05)" strokeWidth="1"/>
-          </pattern>
-          <rect width="620" height="420" fill="url(#grid)" />
-
-          {/* Triangle connecting lines with arrows */}
-          {/* Insured → Greystone */}
-          <line x1="160" y1="320" x2="290" y2="110" stroke="url(#arrowGold)" strokeWidth="2" strokeDasharray="8,4" markerEnd="url(#arrowhead)" />
-          {/* Greystone → Lender */}
-          <line x1="330" y1="110" x2="460" y2="320" stroke="url(#arrowGold)" strokeWidth="2" strokeDasharray="8,4" markerEnd="url(#arrowhead)" />
-          {/* Lender → Insured (bottom line) */}
-          <line x1="440" y1="350" x2="180" y2="350" stroke="url(#arrowGold)" strokeWidth="2.5" markerEnd="url(#arrowhead)" />
-
-          {/* Step Label on Lines */}
-          <text x="195" y="200" textAnchor="middle" fill="#D4AF37" fontSize="11" fontWeight="700" fontFamily="Plus Jakarta Sans, sans-serif" transform="rotate(-60 195 200)">① Risk Transfer</text>
-          <text x="420" y="200" textAnchor="middle" fill="#D4AF37" fontSize="11" fontWeight="700" fontFamily="Plus Jakarta Sans, sans-serif" transform="rotate(60 420 200)">② Loss-Payee Clause</text>
-          <text x="310" y="378" textAnchor="middle" fill="#D4AF37" fontSize="11" fontWeight="700" fontFamily="Plus Jakarta Sans, sans-serif">③ Capital Released</text>
-
-          {/* === Greystone Node (Top Center) === */}
-          <g transform="translate(310,90)" className="cursor-pointer" onClick={() => setActiveStep(activeStep === 1 ? null : 1)}>
-            <rect x="-75" y="-38" width="150" height="76" rx="8" fill="#202632" stroke="#D4AF37" strokeWidth="2" />
-            <rect x="-75" y="-38" width="150" height="4" rx="8" fill="#D4AF37" />
-            <text y="-10" textAnchor="middle" fill="#D4AF37" fontSize="12" fontWeight="800" fontFamily="Cinzel, serif" letterSpacing="3">GREYSTONE</text>
-            <text y="8" textAnchor="middle" fill="#CBD5E1" fontSize="9" fontFamily="Plus Jakarta Sans, sans-serif">Underwriting &</text>
-            <text y="22" textAnchor="middle" fill="#CBD5E1" fontSize="9" fontFamily="Plus Jakarta Sans, sans-serif">Risk Engineering</text>
-            <circle cx="0" cy="-30" r="4" fill="#D4AF37" opacity="0.6" />
-          </g>
-
-          {/* === Insured Node (Bottom Left) === */}
-          <g transform="translate(145,350)" className="cursor-pointer" onClick={() => setActiveStep(activeStep === 0 ? null : 0)}>
-            <rect x="-80" y="-38" width="160" height="76" rx="8" fill="#181C24" stroke="#94A3B8" strokeWidth="1.5" />
-            <text y="-10" textAnchor="middle" fill="#FFFFFF" fontSize="12" fontWeight="700" fontFamily="Cinzel, serif" letterSpacing="2">INSURED</text>
-            <text y="8" textAnchor="middle" fill="#94A3B8" fontSize="9" fontFamily="Plus Jakarta Sans, sans-serif">Corporate Borrower /</text>
-            <text y="22" textAnchor="middle" fill="#94A3B8" fontSize="9" fontFamily="Plus Jakarta Sans, sans-serif">Asset Owner</text>
-          </g>
-
-          {/* === Lender Node (Bottom Right) === */}
-          <g transform="translate(475,350)" className="cursor-pointer" onClick={() => setActiveStep(activeStep === 2 ? null : 2)}>
-            <rect x="-80" y="-38" width="160" height="76" rx="8" fill="#181C24" stroke="#94A3B8" strokeWidth="1.5" />
-            <text y="-10" textAnchor="middle" fill="#FFFFFF" fontSize="12" fontWeight="700" fontFamily="Cinzel, serif" letterSpacing="2">LENDER</text>
-            <text y="8" textAnchor="middle" fill="#94A3B8" fontSize="9" fontFamily="Plus Jakarta Sans, sans-serif">Bank / Syndicate /</text>
-            <text y="22" textAnchor="middle" fill="#94A3B8" fontSize="9" fontFamily="Plus Jakarta Sans, sans-serif">Debt Arranger</text>
-          </g>
-        </svg>
+    <div className="w-full max-w-4xl mx-auto p-6 md:p-10 bg-[var(--paper-warm)] border border-[var(--rule-light)] corner-brackets shadow-sm">
+      <div className="text-center mb-10">
+        <span className="mono-label text-[var(--bronze)] font-semibold">Structural Diagram</span>
+        <h3 className="font-serif text-2xl font-semibold text-[var(--charcoal)] mt-2">
+          The Risk &rarr; Instrument &rarr; Capital Mechanism
+        </h3>
+        <p className="body-sm text-[var(--text-muted-light)] mt-3 max-w-2xl mx-auto">
+          How a Greystone instrument transforms uncollateralized commercial exposure into bank-ready senior debt collateral.
+        </p>
       </div>
 
-      {/* Step-By-Step Explanation Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {steps.map((step, i) => (
-          <div
-            key={step.num}
-            className={`p-5 rounded-xl border transition-all duration-300 cursor-pointer ${
-              activeStep === i
-                ? 'bg-[var(--bg-dark-800)] border-[var(--bronze-500)] shadow-lg'
-                : 'bg-[var(--bg-dark-850)] border-[var(--bg-dark-700)] hover:border-[var(--bronze-500)]/40'
-            }`}
-            onClick={() => setActiveStep(activeStep === i ? null : i)}
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-8 h-8 rounded-full bg-[#D4AF37]/20 border border-[var(--bronze-500)]/50 flex items-center justify-center text-sm font-black text-[var(--bronze-500)] font-cinzel">
-                {step.num}
-              </div>
-              <div>
-                <span className="text-xs font-bold text-[var(--bronze-500)] uppercase tracking-wider block">
-                  {step.action}
-                </span>
-                <span className="text-[10px] text-slate-400">
-                  {step.from} → {step.to}
-                </span>
-              </div>
-            </div>
-            {activeStep === i && (
-              <p className="text-xs text-slate-300 leading-relaxed animate-fade-in">
-                {step.desc}
-              </p>
-            )}
-            {activeStep !== i && (
-              <p className="text-xs text-slate-400 truncate">Click to expand explanation...</p>
-            )}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+        
+        {/* Flow arrows between nodes (desktop only) */}
+        <div className="hidden md:flex absolute top-1/2 left-[33.33%] -translate-x-1/2 -translate-y-1/2 z-20">
+          <div className="w-8 h-8 rounded-full bg-[var(--bronze)] flex items-center justify-center shadow-md">
+            <ArrowRight className="w-4 h-4 text-[var(--cream)]" />
           </div>
-        ))}
+        </div>
+        <div className="hidden md:flex absolute top-1/2 left-[66.66%] -translate-x-1/2 -translate-y-1/2 z-20">
+          <div className="w-8 h-8 rounded-full bg-[var(--bronze)] flex items-center justify-center shadow-md">
+            <ArrowRight className="w-4 h-4 text-[var(--cream)]" />
+          </div>
+        </div>
+
+        {/* Node 1: Borrower / Bidder */}
+        <div className="bg-white p-6 sm:p-7 border border-[var(--rule-light)] text-center relative z-10 flex flex-col justify-between rounded-sm shadow-sm">
+          <div>
+            <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[var(--paper-warm)] flex items-center justify-center text-[var(--bronze)] border-2 border-[var(--rule-light)]">
+              <Building className="w-7 h-7" />
+            </div>
+            <span className="mono-label text-[var(--bronze)] block mb-2 font-semibold">Stage 01 &bull; Borrower / Bidder</span>
+            <h4 className="font-serif text-lg font-semibold text-[var(--charcoal)] mb-3">
+              Commercial Counterparty
+            </h4>
+            <p className="body-sm text-[var(--text-muted-light)] leading-relaxed">
+              Holds operational asset, trade receivable, or tender opportunity, but faces collateral haircut or credit facility ceiling from lender.
+            </p>
+          </div>
+          <div className="mt-5 pt-3 border-t border-[var(--rule-light)] mono-label text-[var(--charcoal)] bg-[var(--paper-warm)] p-2.5 font-semibold">
+            Exposure: Unbacked Risk
+          </div>
+        </div>
+
+        {/* Node 2: Greystone Policy / Instrument — Highlighted center */}
+        <div className="bg-[var(--ink)] text-[var(--cream)] p-6 sm:p-7 border-2 border-[var(--bronze-light)] text-center relative z-10 flex flex-col justify-between rounded-sm shadow-lg corner-brackets">
+          <div>
+            <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[var(--ink-light)] flex items-center justify-center text-[var(--bronze-light)] border-2 border-[var(--bronze-light)]" style={{ borderColor: 'rgba(194, 155, 92, 0.5)' }}>
+              <ShieldCheck className="w-7 h-7" />
+            </div>
+            <span className="mono-label text-[var(--bronze-light)] block mb-2 font-semibold">Stage 02 &bull; Underwritten Structure</span>
+            <h4 className="font-serif text-lg font-semibold text-[var(--cream)] mb-3">
+              Greystone Instrument
+            </h4>
+            <p className="body-sm text-[var(--text-muted-dark)] leading-relaxed">
+              Bespoke policy or guarantee issued with direct Loss-Payee Endorsement or performance indemnity transferring default risk to underwriter.
+            </p>
+          </div>
+          <div className="mt-5 pt-3 border-t border-[var(--rule-dark)] mono-label text-[var(--bronze-light)] bg-[var(--ink-light)] p-2.5 font-semibold">
+            Transformation: Bankable Collateral
+          </div>
+        </div>
+
+        {/* Node 3: Senior Lender / Bank */}
+        <div className="bg-white p-6 sm:p-7 border border-[var(--rule-light)] text-center relative z-10 flex flex-col justify-between rounded-sm shadow-sm">
+          <div>
+            <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[var(--paper-warm)] flex items-center justify-center text-[var(--bronze)] border-2 border-[var(--rule-light)]">
+              <Landmark className="w-7 h-7" />
+            </div>
+            <span className="mono-label text-[var(--bronze)] block mb-2 font-semibold">Stage 03 &bull; Financial Institution</span>
+            <h4 className="font-serif text-lg font-semibold text-[var(--charcoal)] mb-3">
+              Lender / Procurement Entity
+            </h4>
+            <p className="body-sm text-[var(--text-muted-light)] leading-relaxed">
+              Accepts assigned policy as primary credit enhancement under Basel III guidelines, unlocking facility approval or tender award.
+            </p>
+          </div>
+          <div className="mt-5 pt-3 border-t border-[var(--rule-light)] mono-label text-[var(--charcoal)] bg-[var(--paper-warm)] p-2.5 font-semibold">
+            Outcome: Capital Disbursed
+          </div>
+        </div>
+
       </div>
 
-      {/* Legal Qualifier */}
-      <div className="p-4 rounded-lg bg-[var(--bg-dark-900)] border border-[var(--bg-dark-800)] text-xs text-slate-500 leading-relaxed">
-        <strong className="text-slate-300">Regulatory Disclaimer:</strong> The financing mechanics illustrated above represent the structural framework for loss-payee collateral arrangements. Specific outcomes — including collateral recognition, haircut elimination, and credit facility expansion — depend on individual underwriting assessment, jurisdictional regulatory review, lender credit committee approval, and applicable terms and conditions. Greystone makes no guarantee of specific financing outcomes.
+      {/* Connecting Flow Explanations */}
+      <div className="mt-10 pt-6 border-t border-[var(--rule-light)] grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex items-start gap-3 bg-white p-4 border border-[var(--rule-light)] rounded-sm">
+          <ArrowRight className="w-5 h-5 text-[var(--bronze)] shrink-0 mt-0.5" />
+          <p className="body-sm text-[var(--text-muted-light)] leading-relaxed">
+            <strong className="text-[var(--charcoal)] font-semibold">Loss-Payee Assignment:</strong> Direct legal assignment ensures claim proceeds pay out straight to the lender in event of counterparty insolvency.
+          </p>
+        </div>
+        <div className="flex items-start gap-3 bg-white p-4 border border-[var(--rule-light)] rounded-sm">
+          <Lock className="w-5 h-5 text-[var(--bronze)] shrink-0 mt-0.5" />
+          <p className="body-sm text-[var(--text-muted-light)] leading-relaxed">
+            <strong className="text-[var(--charcoal)] font-semibold">Subject to Underwriting:</strong> Final capital recognition depends on individual credit committee approval and policy terms.
+          </p>
+        </div>
       </div>
     </div>
   );

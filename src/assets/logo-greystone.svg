@@ -1,21 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 120" width="100%" height="100%">
   <defs>
-    <!-- Bronze Gold Gradients -->
-    <linearGradient id="bronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F3E4C8" />
-      <stop offset="45%" stop-color="#D4AF37" />
-      <stop offset="85%" stop-color="#C59B27" />
-      <stop offset="100%" stop-color="#8B6D36" />
+    <linearGradient id="bronzeGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8A5810" />
+      <stop offset="50%" stop-color="#674009" />
+      <stop offset="100%" stop-color="#452904" />
     </linearGradient>
 
-    <linearGradient id="slateGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2B3344" />
-      <stop offset="100%" stop-color="#11141A" />
-    </linearGradient>
-
-    <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="bronzeGlowLight" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="transparent" />
-      <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#674009" stop-opacity="0.5" />
       <stop offset="100%" stop-color="transparent" />
     </linearGradient>
   </defs>
@@ -24,41 +17,37 @@
   <g transform="translate(10, 10)">
     <!-- Outer Shield Frame -->
     <path d="M 50,5 L 85,25 L 85,65 C 85,85 50,98 50,98 C 50,98 15,85 15,65 L 15,25 Z" 
-          fill="url(#slateGrad)" stroke="url(#bronzeGrad)" stroke-width="2.5" />
+          fill="#F2EEE4" stroke="url(#bronzeGradLight)" stroke-width="2.5" />
     
-    <!-- Inner Geometric Pillars / Greystone G -->
+    <!-- Inner Geometric Pillars -->
     <path d="M 50,15 L 75,30 L 75,60 C 75,74 50,85 50,85 C 50,85 25,74 25,60 L 25,30 Z" 
-          fill="none" stroke="url(#bronzeGrad)" stroke-width="1" stroke-dasharray="3,2" opacity="0.6" />
+          fill="none" stroke="url(#bronzeGradLight)" stroke-width="1" stroke-dasharray="3,2" opacity="0.6" />
 
     <!-- 3 Institutional Architectural Columns -->
-    <rect x="32" y="32" width="6" height="34" rx="1" fill="url(#bronzeGrad)" />
-    <rect x="47" y="27" width="6" height="42" rx="1" fill="url(#bronzeGrad)" />
-    <rect x="62" y="32" width="6" height="34" rx="1" fill="url(#bronzeGrad)" />
+    <rect x="32" y="32" width="6" height="34" rx="1" fill="url(#bronzeGradLight)" />
+    <rect x="47" y="27" width="6" height="42" rx="1" fill="url(#bronzeGradLight)" />
+    <rect x="62" y="32" width="6" height="34" rx="1" fill="url(#bronzeGradLight)" />
 
     <!-- Arch Top Architrave -->
-    <path d="M 28,30 L 72,30 L 50,18 Z" fill="url(#bronzeGrad)" />
+    <path d="M 28,30 L 72,30 L 50,18 Z" fill="url(#bronzeGradLight)" />
     <!-- Pedestal Base -->
-    <rect x="26" y="68" width="48" height="4" rx="1" fill="url(#bronzeGrad)" />
-    <!-- Center Diamond Core -->
-    <polygon points="50,42 55,48 50,54 45,48" fill="#FFFFFF" />
+    <rect x="26" y="68" width="48" height="4" rx="1" fill="url(#bronzeGradLight)" />
+    <!-- Center Core -->
+    <polygon points="50,42 55,48 50,54 45,48" fill="#1C1A17" />
   </g>
 
   <!-- Wordmark Text -->
-  <!-- Primary Title: GREYSTONE -->
-  <text x="118" y="58" font-family="'Cinzel', 'Playfair Display', serif" font-size="40" font-weight="700" letter-spacing="4" fill="url(#bronzeGrad)">
+  <text x="118" y="58" font-family="'Fraunces', Georgia, serif" font-size="38" font-weight="700" letter-spacing="3" fill="#1C1A17">
     GREYSTONE
   </text>
 
-  <!-- Subtitle: INSURANCE LLC -->
-  <text x="120" y="82" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="600" letter-spacing="7" fill="#CBD5E1">
+  <text x="120" y="82" font-family="'IBM Plex Mono', monospace" font-size="13" font-weight="500" letter-spacing="6" fill="#674009">
     INSURANCE LLC
   </text>
 
-  <!-- Subtle Separator Line -->
-  <rect x="120" y="90" width="390" height="1" fill="url(#goldGlow)" />
+  <rect x="120" y="90" width="390" height="1" fill="url(#bronzeGlowLight)" />
 
-  <!-- Tagline Subtext -->
-  <text x="120" y="104" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="3" fill="#94A3B8" opacity="0.9">
+  <text x="120" y="104" font-family="'IBM Plex Sans', sans-serif" font-size="10" font-weight="600" letter-spacing="3" fill="#6B6560">
     YOUR RISK. OUR RESPONSIBILITY.
   </text>
 </svg>

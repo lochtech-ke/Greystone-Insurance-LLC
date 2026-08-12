@@ -1,71 +1,34 @@
-import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { UnderwritingModal } from './components/UnderwritingModal';
+import { ScrollToTop } from './components/ScrollToTop';
+
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { UnlockingFinancingPage } from './pages/UnlockingFinancingPage';
-import { ClaimsPage } from './pages/ClaimsPage';
-import { InsightsPage } from './pages/InsightsPage';
 import { ContactPage } from './pages/ContactPage';
-
-type TabId = 'home' | 'about' | 'services' | 'unlocking-financing' | 'claims' | 'insights' | 'contact';
+import { TalkToUnderwriterPage } from './pages/TalkToUnderwriterPage';
 
 function App() {
-  const [currentTab, setCurrentTab] = useState<TabId>('home');
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const handleNavigate = (tab: string) => {
-    setCurrentTab(tab as TabId);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  
-
   return (
-    <div className="min-h-screen bg-[var(--bg-dark-950)] font-sans">
-      <Header
-        currentTab={currentTab}
-        onNavigate={handleNavigate}
-        onOpenUnderwritingModal={() => setModalOpen(true)}
-      />
+    <div className="min-h-screen flex flex-col bg-[var(--paper)] text-[var(--charcoal)] font-sans">
+      <ScrollToTop />
+      <Header />
 
-      {currentTab === 'home' && (
-        <HomePage
-          onOpenUnderwritingModal={() => setModalOpen(true)}
-          onNavigate={handleNavigate}
-        />
-      )}
-      {currentTab === 'about' && (
-        <AboutPage
-          onOpenUnderwritingModal={() => setModalOpen(true)}
-          onNavigate={handleNavigate}
-        />
-      )}
-      {currentTab === 'services' && (
-        <ServicesPage onOpenUnderwritingModal={() => setModalOpen(true)} />
-      )}
-      {currentTab === 'unlocking-financing' && (
-        <UnlockingFinancingPage onOpenUnderwritingModal={() => setModalOpen(true)} />
-      )}
-      {currentTab === 'claims' && (
-        <ClaimsPage onOpenUnderwritingModal={() => setModalOpen(true)} />
-      )}
-      {currentTab === 'insights' && <InsightsPage />}
-      {currentTab === 'contact' && (
-        <ContactPage onOpenUnderwritingModal={() => setModalOpen(true)} />
-      )}
+      <div className="flex-grow">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/unlocking-financing" element={<UnlockingFinancingPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/talk-to-an-underwriter" element={<TalkToUnderwriterPage />} />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      </div>
 
-      <Footer
-        onNavigate={handleNavigate}
-        onOpenUnderwritingModal={() => setModalOpen(true)}
-      />
-
-      <UnderwritingModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-      />
+      <Footer />
     </div>
   );
 }
