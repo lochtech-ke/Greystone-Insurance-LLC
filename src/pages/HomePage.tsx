@@ -205,6 +205,58 @@ export const HomePage: React.FC = () => {
 
               </div>
 
+              {/* 3-WAY COMPARISON MATRIX: Greystone vs Bank LC vs Cash Collateral */}
+              <ScrollReveal>
+                <div className="bg-white border border-[var(--rule-light)] rounded-lg p-6 sm:p-8 shadow-md mt-10 space-y-6">
+                  <div className="text-center max-w-xl mx-auto space-y-2">
+                    <span className="mono-label text-xs text-[var(--bronze)] font-bold">STRUCTURAL SUPERIORITY</span>
+                    <h3 className="font-serif text-2xl font-bold">Why Institutional Architecture Wins</h3>
+                    <p className="body-sm text-xs text-[var(--text-muted-light)]">
+                      Comparing financial collateral options for enterprise capital deployment.
+                    </p>
+                  </div>
+
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs border-collapse">
+                      <thead>
+                        <tr className="border-b-2 border-[var(--rule-light)] font-mono text-[11px] text-[var(--charcoal)]">
+                          <th className="py-3 px-3">Capital Criterion</th>
+                          <th className="py-3 px-3 bg-[var(--paper-warm)] text-[var(--bronze-hover)] font-bold">Greystone Loss-Payee Policy</th>
+                          <th className="py-3 px-3">Bank Letter of Credit (LC)</th>
+                          <th className="py-3 px-3">Cash Collateral Reserve</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-[var(--rule-light)]">
+                        <tr>
+                          <td className="py-3 px-3 font-semibold">Working Capital Drain</td>
+                          <td className="py-3 px-3 bg-[var(--paper-warm)] font-bold text-emerald-800">Zero (Annual Premium Only)</td>
+                          <td className="py-3 px-3 text-amber-800">Locks Credit Line Limits</td>
+                          <td className="py-3 px-3 text-red-800">100% Liquidity Freeze</td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 px-3 font-semibold">LTV Ceiling Allowed</td>
+                          <td className="py-3 px-3 bg-[var(--paper-warm)] font-bold text-emerald-800">Up to 90% – 95% LTV</td>
+                          <td className="py-3 px-3 text-slate-700">60% – 75% LTV Cap</td>
+                          <td className="py-3 px-3 text-slate-700">100% Dollar-for-Dollar</td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 px-3 font-semibold">Basel III Regulatory Relief</td>
+                          <td className="py-3 px-3 bg-[var(--paper-warm)] font-bold text-emerald-800">Full CRM Substitution</td>
+                          <td className="py-3 px-3 text-slate-700">Partial Bank Reserve Charge</td>
+                          <td className="py-3 px-3 text-slate-700">Zero Capital Relief</td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 px-3 font-semibold">Scalability Across Tenders</td>
+                          <td className="py-3 px-3 bg-[var(--paper-warm)] font-bold text-emerald-800">Multi-Facility Reinsurance Backed</td>
+                          <td className="py-3 px-3 text-slate-700">Limited by Bank Line Limit</td>
+                          <td className="py-3 px-3 text-slate-700">Strict Cash Cap</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </ScrollReveal>
+
               <div className="text-center pt-2">
                 <Link
                   to="/unlocking-financing"

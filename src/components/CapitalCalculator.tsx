@@ -271,6 +271,42 @@ export const CapitalCalculator: React.FC = () => {
               </div>
             </div>
 
+            {/* Visual Comparison Bar Chart */}
+            <div className="space-y-3 p-3 bg-[var(--ink-light)] rounded border border-[var(--rule-dark)] mb-4">
+              <div className="flex items-center justify-between text-[11px] font-mono">
+                <span className="text-[var(--text-muted-dark)]">Borrowing Base Comparison:</span>
+                <span className="text-[var(--bronze-light)] font-bold">LTV Comparison</span>
+              </div>
+              
+              {/* Bar 1: Unbacked */}
+              <div className="space-y-1">
+                <div className="flex justify-between text-[10px] text-[var(--text-muted-dark)] font-mono">
+                  <span>Standard Bank Haircut ({metrics.ltvBase}% LTV)</span>
+                  <span>{formatCurrency(contractValue * (metrics.ltvBase / 100))}</span>
+                </div>
+                <div className="w-full h-2.5 bg-black/40 rounded-full overflow-hidden border border-white/10">
+                  <div 
+                    className="h-full bg-slate-500 rounded-full transition-all duration-500" 
+                    style={{ width: `${metrics.ltvBase}%` }} 
+                  />
+                </div>
+              </div>
+
+              {/* Bar 2: Greystone Loss-Payee Boosted */}
+              <div className="space-y-1">
+                <div className="flex justify-between text-[10px] text-[var(--bronze-light)] font-mono font-bold">
+                  <span>Greystone Loss-Payee Base ({metrics.maxLtv}% LTV)</span>
+                  <span>{formatCurrency(metrics.collateralValue)}</span>
+                </div>
+                <div className="w-full h-2.5 bg-black/40 rounded-full overflow-hidden border border-[var(--glass-border)]">
+                  <div 
+                    className="h-full bg-gradient-to-r from-[var(--bronze)] to-[var(--bronze-light)] rounded-full transition-all duration-500 shadow-md" 
+                    style={{ width: `${metrics.maxLtv}%` }} 
+                  />
+                </div>
+              </div>
+            </div>
+
             {/* Metrics Grid */}
             <div className="grid grid-cols-2 gap-3 pt-4 border-t border-[var(--rule-dark)] text-xs">
               

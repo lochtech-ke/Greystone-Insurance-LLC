@@ -36,14 +36,40 @@ export const Header: React.FC = () => {
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[var(--ink)]/95 border-b border-[var(--rule-dark)] shadow-xl py-3 backdrop-blur-md'
-          : 'bg-[var(--ink-overlay)] border-b border-[var(--rule-dark)] py-4 backdrop-blur-sm'
-      }`}
-    >
-      <div className="container">
+    <>
+      {/* Top Syndicate Status Strip */}
+      <div className="bg-[var(--ink)] border-b border-[var(--rule-dark)] py-1.5 px-4 text-[11px] font-mono text-[var(--text-muted-dark)] hidden md:block relative z-50">
+        <div className="container flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 text-[var(--bronze-light)] font-bold">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping inline-block" />
+              UNDERWRITING DESK ACTIVE
+            </span>
+            <span className="text-[var(--rule-dark)]">|</span>
+            <span>SINGLE FACILITY CAPACITY: <strong className="text-[var(--cream)]">$100M+ USD</strong></span>
+            <span className="text-[var(--rule-dark)]">|</span>
+            <span>BASEL III CRM COMPLIANT</span>
+          </div>
+          <div className="flex items-center gap-4 text-[10px]">
+            <Link to="/calculator" className="text-[var(--bronze-light)] hover:underline flex items-center gap-1">
+              <span>Model Capital Leverage</span>
+            </Link>
+            <span>•</span>
+            <Link to="/knowledge-base" className="hover:text-[var(--cream)]">
+              Regulatory Glossary
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <header
+        className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'top-0 bg-[var(--ink)]/95 border-b border-[var(--rule-dark)] shadow-2xl py-3 backdrop-blur-md'
+            : 'top-0 md:top-7 bg-[var(--ink-overlay)] border-b border-[var(--rule-dark)] py-3.5 backdrop-blur-sm'
+        }`}
+      >
+        <div className="container">
         <div className="flex items-center justify-between">
           
           {/* Brand Logo */}
@@ -229,5 +255,6 @@ export const Header: React.FC = () => {
         </div>
       )}
     </header>
-  );
+  </>
+);
 };

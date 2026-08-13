@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { ArrowRight, ShieldCheck, Landmark, Building, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Landmark, Building, CheckCircle2, Globe } from 'lucide-react';
 
 export const FinancingTriangleDiagram: React.FC = () => {
-  const [activeStep, setActiveStep] = useState<number>(2); // 1, 2, or 3
+  const [activeStep, setActiveStep] = useState<number>(2); // 1, 2, 3, 4
 
   const stepDetails = [
     {
@@ -28,11 +28,24 @@ export const FinancingTriangleDiagram: React.FC = () => {
       covenants: [
         'Direct claim assignment to lending institution',
         'Insolvency, default, and non-performance indemnity',
-        'A-rated syndicate financial strength backing'
+        'Bespoke policy drafting satisfying international covenants'
       ]
     },
     {
       step: 3,
+      title: 'Tier-1 Global Reinsurance Engine',
+      subtitle: 'Institutional Capacity & Credit Enhancement',
+      exposure: 'Reinsurance Backed Risk Capacity ($100M+)',
+      description: 'Every Greystone instrument is anchored to top-tier international reinsurers (rated A/A+ by S&P/Moody\'s). This global reinsurance backing converts regional credit risk into internationally recognized bankable documentation.',
+      keyMechanic: 'Reinsurance Risk Distribution & Credit Rating Boost',
+      covenants: [
+        'S&P / Moody\'s A+ rated counterparty security',
+        'Capacity expansion up to $100M+ per facility',
+        'World Bank, IFC, and international bank acceptance'
+      ]
+    },
+    {
+      step: 4,
       title: 'Institutional Debt / Capital Provider',
       subtitle: 'Senior Debt Disbursed & Haircut Removed',
       exposure: 'Capital Released (Up to 90%+ LTV)',
@@ -53,108 +66,123 @@ export const FinancingTriangleDiagram: React.FC = () => {
       
       {/* Diagram Header */}
       <div className="text-center max-w-2xl mx-auto">
-        <span className="mono-label text-[var(--bronze)] font-semibold">Interactive Workflow Protocol</span>
+        <span className="mono-label text-[var(--bronze)] font-semibold">Interactive Reinsurance &amp; Capital Protocol</span>
         <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[var(--charcoal)] mt-1">
-          The Risk &rarr; Policy &rarr; Capital Pathway
+          The 4-Stage Financial Architecture Engine
         </h3>
         <p className="body-sm text-xs sm:text-sm text-[var(--text-muted-light)] mt-2">
           Click any stage below to inspect the legal, regulatory, and credit mechanisms in real time.
         </p>
       </div>
 
-      {/* Interactive 3-Node Cards Container */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+      {/* Interactive 4-Node Cards Container */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
         
-        {/* Animated flow connectors (desktop) */}
-        <div className="hidden md:flex absolute top-1/2 left-[33.33%] -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
-          <div className="w-9 h-9 rounded-full bg-[var(--bronze)] text-[var(--cream)] flex items-center justify-center shadow-lg animate-pulse-subtle">
-            <ArrowRight className="w-4 h-4" />
-          </div>
-        </div>
-        <div className="hidden md:flex absolute top-1/2 left-[66.66%] -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
-          <div className="w-9 h-9 rounded-full bg-[var(--bronze)] text-[var(--cream)] flex items-center justify-center shadow-lg animate-pulse-subtle">
-            <ArrowRight className="w-4 h-4" />
-          </div>
-        </div>
-
         {/* Node 1 */}
         <button
           type="button"
           onClick={() => setActiveStep(1)}
-          className={`p-6 border text-center transition-all duration-300 rounded-md relative flex flex-col justify-between cursor-pointer text-left ${
+          className={`p-5 border text-left transition-all duration-300 rounded-md relative flex flex-col justify-between cursor-pointer ${
             activeStep === 1
               ? 'bg-white border-2 border-[var(--bronze)] shadow-xl ring-2 ring-[var(--bronze)]/20 scale-[1.02]'
               : 'bg-white/80 border-[var(--rule-light)] opacity-80 hover:opacity-100 hover:border-[var(--bronze-light)]'
           }`}
         >
           <div>
-            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[var(--paper-warm)] flex items-center justify-center text-[var(--bronze)] border border-[var(--rule-light)]">
-              <Building className="w-6 h-6" />
+            <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-[var(--paper-warm)] flex items-center justify-center text-[var(--bronze)] border border-[var(--rule-light)]">
+              <Building className="w-5 h-5" />
             </div>
-            <span className="mono-label text-[10px] text-[var(--bronze)] block mb-1 font-bold text-center">STAGE 01</span>
-            <h4 className="font-serif text-base font-bold text-[var(--charcoal)] text-center mb-2">
-              Borrower / Bidder
+            <span className="mono-label text-[9px] text-[var(--bronze)] block mb-1 font-bold text-center">STAGE 01</span>
+            <h4 className="font-serif text-sm font-bold text-[var(--charcoal)] text-center mb-1">
+              Borrower / Enterprise
             </h4>
-            <p className="body-sm text-xs text-[var(--text-muted-light)] text-center leading-relaxed">
-              Holds contract or asset but constrained by bank credit limits or haircut requirements.
+            <p className="body-sm text-[11px] text-[var(--text-muted-light)] text-center leading-tight">
+              Constrained by bank credit limits or haircut rules.
             </p>
           </div>
-          <div className="mt-4 pt-3 border-t border-[var(--rule-light)] mono-label text-[10px] text-center text-[var(--charcoal)] bg-[var(--paper-warm)] p-2 font-semibold">
-            Status: Unbacked Exposure
+          <div className="mt-3 pt-2 border-t border-[var(--rule-light)] mono-label text-[9px] text-center text-[var(--charcoal)] bg-[var(--paper-warm)] p-1.5 font-semibold">
+            Unbacked Exposure
           </div>
         </button>
 
-        {/* Node 2 (Greystone Instrument - Highlighted Center) */}
+        {/* Node 2 (Greystone Instrument) */}
         <button
           type="button"
           onClick={() => setActiveStep(2)}
-          className={`p-6 border-2 text-center transition-all duration-300 rounded-md relative flex flex-col justify-between cursor-pointer text-left ${
+          className={`p-5 border-2 text-left transition-all duration-300 rounded-md relative flex flex-col justify-between cursor-pointer ${
             activeStep === 2
-              ? 'bg-[var(--ink)] text-[var(--cream)] border-[var(--bronze-light)] shadow-2xl ring-2 ring-[var(--bronze-light)]/40 scale-[1.04] glow-active'
+              ? 'bg-[var(--ink)] text-[var(--cream)] border-[var(--bronze-light)] shadow-2xl ring-2 ring-[var(--bronze-light)]/40 scale-[1.03] glow-active'
               : 'bg-[var(--ink-light)] text-[var(--cream)] border-[var(--rule-dark)] opacity-85 hover:opacity-100'
           }`}
         >
           <div>
-            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[var(--ink-light)] flex items-center justify-center text-[var(--bronze-light)] border border-[var(--bronze-light)]">
-              <ShieldCheck className="w-6 h-6" />
+            <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-[var(--ink-light)] flex items-center justify-center text-[var(--bronze-light)] border border-[var(--bronze-light)]">
+              <ShieldCheck className="w-5 h-5" />
             </div>
-            <span className="mono-label text-[10px] text-[var(--bronze-light)] block mb-1 font-bold text-center">STAGE 02 &bull; CORE</span>
-            <h4 className="font-serif text-base font-bold text-[var(--cream)] text-center mb-2">
+            <span className="mono-label text-[9px] text-[var(--bronze-light)] block mb-1 font-bold text-center">STAGE 02 &bull; STRUCTURE</span>
+            <h4 className="font-serif text-sm font-bold text-[var(--cream)] text-center mb-1">
               Greystone Policy
             </h4>
-            <p className="body-sm text-xs text-[var(--text-muted-dark)] text-center leading-relaxed">
-              Underwritten instrument with direct Loss-Payee Endorsement to lender.
+            <p className="body-sm text-[11px] text-[var(--text-muted-dark)] text-center leading-tight">
+              Bespoke policy with direct Loss-Payee Endorsement.
             </p>
           </div>
-          <div className="mt-4 pt-3 border-t border-[var(--rule-dark)] mono-label text-[10px] text-center text-[var(--bronze-light)] bg-[var(--ink)] p-2 font-bold">
-            Status: Bankable Collateral
+          <div className="mt-3 pt-2 border-t border-[var(--rule-dark)] mono-label text-[9px] text-center text-[var(--bronze-light)] bg-[var(--ink)] p-1.5 font-bold">
+            Bankable Policy
           </div>
         </button>
 
-        {/* Node 3 */}
+        {/* Node 3 (Tier-1 Reinsurance Engine) */}
         <button
           type="button"
           onClick={() => setActiveStep(3)}
-          className={`p-6 border text-center transition-all duration-300 rounded-md relative flex flex-col justify-between cursor-pointer text-left ${
+          className={`p-5 border text-left transition-all duration-300 rounded-md relative flex flex-col justify-between cursor-pointer ${
             activeStep === 3
               ? 'bg-white border-2 border-[var(--bronze)] shadow-xl ring-2 ring-[var(--bronze)]/20 scale-[1.02]'
               : 'bg-white/80 border-[var(--rule-light)] opacity-80 hover:opacity-100 hover:border-[var(--bronze-light)]'
           }`}
         >
           <div>
-            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[var(--paper-warm)] flex items-center justify-center text-[var(--bronze)] border border-[var(--rule-light)]">
-              <Landmark className="w-6 h-6" />
+            <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-[var(--paper-warm)] flex items-center justify-center text-[var(--bronze)] border border-[var(--rule-light)]">
+              <Globe className="w-5 h-5" />
             </div>
-            <span className="mono-label text-[10px] text-[var(--bronze)] block mb-1 font-bold text-center">STAGE 03</span>
-            <h4 className="font-serif text-base font-bold text-[var(--charcoal)] text-center mb-2">
-              Lender / Bank
+            <span className="mono-label text-[9px] text-[var(--bronze)] block mb-1 font-bold text-center">STAGE 03 &bull; SYNDICATE</span>
+            <h4 className="font-serif text-sm font-bold text-[var(--charcoal)] text-center mb-1">
+              Reinsurance Engine
             </h4>
-            <p className="body-sm text-xs text-[var(--text-muted-light)] text-center leading-relaxed">
-              Accepts assigned policy under Basel III rules, releasing senior debt facility.
+            <p className="body-sm text-[11px] text-[var(--text-muted-light)] text-center leading-tight">
+              Tier-1 A+ global reinsurer backing ($100M+ capacity).
             </p>
           </div>
-          <div className="mt-4 pt-3 border-t border-[var(--rule-light)] mono-label text-[10px] text-center text-[var(--charcoal)] bg-[var(--paper-warm)] p-2 font-semibold">
-            Status: Debt Disbursed
+          <div className="mt-3 pt-2 border-t border-[var(--rule-light)] mono-label text-[9px] text-center text-[var(--charcoal)] bg-[var(--paper-warm)] p-1.5 font-semibold">
+            A+ Credit Security
+          </div>
+        </button>
+
+        {/* Node 4 (Lender/Bank) */}
+        <button
+          type="button"
+          onClick={() => setActiveStep(4)}
+          className={`p-5 border text-left transition-all duration-300 rounded-md relative flex flex-col justify-between cursor-pointer ${
+            activeStep === 4
+              ? 'bg-white border-2 border-[var(--bronze)] shadow-xl ring-2 ring-[var(--bronze)]/20 scale-[1.02]'
+              : 'bg-white/80 border-[var(--rule-light)] opacity-80 hover:opacity-100 hover:border-[var(--bronze-light)]'
+          }`}
+        >
+          <div>
+            <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-[var(--paper-warm)] flex items-center justify-center text-[var(--bronze)] border border-[var(--rule-light)]">
+              <Landmark className="w-5 h-5" />
+            </div>
+            <span className="mono-label text-[9px] text-[var(--bronze)] block mb-1 font-bold text-center">STAGE 04 &bull; CAPITAL</span>
+            <h4 className="font-serif text-sm font-bold text-[var(--charcoal)] text-center mb-1">
+              Senior Debt Lender
+            </h4>
+            <p className="body-sm text-[11px] text-[var(--text-muted-light)] text-center leading-tight">
+              Basel III CRM substitution, up to 90% LTV released.
+            </p>
+          </div>
+          <div className="mt-3 pt-2 border-t border-[var(--rule-light)] mono-label text-[9px] text-center text-[var(--charcoal)] bg-[var(--paper-warm)] p-1.5 font-semibold">
+            Debt Disbursed
           </div>
         </button>
 
@@ -212,3 +240,4 @@ export const FinancingTriangleDiagram: React.FC = () => {
     </div>
   );
 };
+
