@@ -2,10 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { SEOHead } from '../components/SEOHead';
 import { ScrollReveal } from '../components/ScrollReveal';
-import { CapitalCalculator } from '../components/CapitalCalculator';
-import { CaseStudyShowcase } from '../components/CaseStudyShowcase';
-import { FinancingTriangleDiagram } from '../components/FinancingTriangleDiagram';
-import { RiskKnowledgeBase } from '../components/RiskKnowledgeBase';
 import { PRODUCT_INSTRUMENTS } from '../data/products';
 
 import heroDeskImg from '../assets/hero-desk.png';
@@ -13,7 +9,7 @@ import certificateBgImg from '../assets/certificate-bg.png';
 
 import {
   ShieldCheck, ArrowRight, ChevronRight, FileCheck,
-  Coins, Award, Ship, Calculator
+  Coins, Award, Ship, Calculator, BookOpen, Layers
 } from 'lucide-react';
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -77,14 +73,14 @@ export const HomePage: React.FC = () => {
                       <span>Talk to an Underwriter</span>
                       <ArrowRight className="w-4 h-4" />
                     </Link>
-                    <a
-                      href="#calculator"
+                    <Link
+                      to="/calculator"
                       className="btn btn-secondary btn-lg w-full sm:w-auto text-[var(--cream)] border-[var(--bronze-light)] hover:bg-[var(--bronze-light)] hover:text-[var(--ink)]"
                     >
                       <Calculator className="w-4 h-4 text-[var(--bronze-light)]" />
                       <span>Model Capital Leverage</span>
                       <ChevronRight className="w-4 h-4" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </ScrollReveal>
@@ -126,7 +122,7 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
-        {/* TRUST STRIP — Regulatory & Licensing Note */}
+        {/* TRUST STRIP — Regulatory Notice */}
         <section className="bg-[var(--paper-warm)] border-b border-[var(--rule-light)] py-4">
           <div className="container">
             <div className="placeholder-flag">
@@ -145,30 +141,8 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
-        {/* INTERACTIVE CAPITAL CALCULATOR SECTION */}
-        <section id="calculator" className="section bg-[var(--paper)] scroll-mt-24">
-          <div className="container">
-            <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-              <ScrollReveal>
-                <span className="mono-label text-[var(--bronze)]">Simulate Facility Leverage</span>
-                <h2 className="font-serif text-3xl sm:text-4xl font-bold">
-                  Interactive Capital &amp; Collateral Modeler
-                </h2>
-                <div className="rule-bronze my-4" />
-                <p className="body-sm text-[var(--text-muted-light)]">
-                  Adjust contract value, tenor, and counterparty rating below to see how a Loss-Payee endorsement converts uncollateralized assets into senior debt capacity.
-                </p>
-              </ScrollReveal>
-            </div>
-
-            <ScrollReveal>
-              <CapitalCalculator />
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* "INSURANCE AS A FINANCIAL INSTRUMENT" TEASER */}
-        <section className="section bg-[var(--paper-warm)] border-t border-[var(--rule-light)]">
+        {/* CORE MECHANISM TEASER */}
+        <section className="section bg-[var(--paper-warm)] border-b border-[var(--rule-light)]">
           <div className="container">
             <div className="max-w-4xl mx-auto space-y-12">
               
@@ -234,10 +208,11 @@ export const HomePage: React.FC = () => {
               <div className="text-center pt-2">
                 <Link
                   to="/unlocking-financing"
-                  className="inline-flex items-center gap-2 mono-label text-sm font-semibold text-[var(--bronze)] hover:text-[var(--bronze-hover)] group"
+                  className="btn btn-primary font-mono text-xs uppercase shadow-md gap-2"
                 >
-                  <span>Explore full Loss-Payee mechanics &amp; Basel III framework</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <BookOpen className="w-4 h-4" />
+                  <span>Read Unlocking Financing Flagship Guide</span>
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
 
@@ -245,12 +220,12 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
-        {/* PRODUCTS PREVIEW — 5 Cards */}
-        <section className="section bg-[var(--paper)] border-t border-[var(--rule-light)]">
+        {/* 5 FINANCIAL CLAUSES PREVIEW GRID */}
+        <section className="section bg-[var(--paper)]">
           <div className="container">
             <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
               <ScrollReveal>
-                <span className="mono-label text-[var(--bronze)]">Underwritten Lines</span>
+                <span className="mono-label text-[var(--bronze)]">Product Directory</span>
                 <h2 className="font-serif text-3xl sm:text-4xl font-bold">
                   Five Core Financial Instruments
                 </h2>
@@ -260,7 +235,7 @@ export const HomePage: React.FC = () => {
               </ScrollReveal>
             </div>
 
-            <div className="grid-5">
+            <div className="grid-5 mb-8">
               {PRODUCT_INSTRUMENTS.map((product, idx) => {
                 const IconComponent = ICON_MAP[product.iconName] || ShieldCheck;
                 return (
@@ -273,7 +248,7 @@ export const HomePage: React.FC = () => {
                             <IconComponent className="w-4 h-4" />
                           </div>
                         </div>
-                        <h3 className="font-serif text-lg font-bold mb-3 group-hover:text-[var(--bronze)] transition-colors">
+                        <h3 className="font-serif text-base font-bold mb-3 group-hover:text-[var(--bronze)] transition-colors">
                           {product.title}
                         </h3>
                         <p className="body-sm text-[var(--text-muted-light)] mb-6 text-xs leading-relaxed">
@@ -282,10 +257,10 @@ export const HomePage: React.FC = () => {
                       </div>
                       <div className="pt-4 border-t border-[var(--rule-light)]">
                         <Link
-                          to={`/services#${product.id}`}
+                          to={`/services/${product.id}`}
                           className="mono-label text-[11px] text-[var(--bronze)] hover:text-[var(--bronze-hover)] flex items-center justify-between font-semibold"
                         >
-                          <span>Explore Clause</span>
+                          <span>View Clause Page</span>
                           <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
                       </div>
@@ -294,57 +269,103 @@ export const HomePage: React.FC = () => {
                 );
               })}
             </div>
+
+            <div className="text-center">
+              <Link to="/services" className="btn btn-secondary font-mono text-xs uppercase">
+                <span>View Full Services &amp; Products Directory</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </section>
 
-        {/* INTERACTIVE WORKFLOW DIAGRAM */}
+        {/* DEDICATED FEATURE TEASERS GRID (Calculator, Case Studies, Knowledge Base) */}
         <section className="section bg-[var(--paper-warm)] border-t border-[var(--rule-light)]">
           <div className="container">
-            <ScrollReveal>
-              <FinancingTriangleDiagram />
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* CASE STUDIES & DEAL SHOWCASE */}
-        <section className="section bg-[var(--paper)] border-t border-[var(--rule-light)]">
-          <div className="container">
-            <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
+            <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
               <ScrollReveal>
-                <span className="mono-label text-[var(--bronze)]">Track Record &amp; Transactions</span>
+                <span className="mono-label text-[var(--bronze)]">Interactive Suite</span>
                 <h2 className="font-serif text-3xl sm:text-4xl font-bold">
-                  Institutional Case Studies
+                  Dedicated Financial Tools &amp; Resources
                 </h2>
                 <p className="body-sm text-[var(--text-muted-light)]">
-                  Explore how Greystone Loss-Payee structures solved collateral bottlenecks for global borrowers and procurement syndicates.
+                  Explore dedicated modules designed for CFOs, risk engineers, and debt syndicates.
                 </p>
               </ScrollReveal>
             </div>
 
-            <ScrollReveal>
-              <CaseStudyShowcase />
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* RISK KNOWLEDGE BASE / FAQ MATRIX */}
-        <section className="section bg-[var(--paper-warm)] border-t border-[var(--rule-light)]">
-          <div className="container">
-            <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-              <ScrollReveal>
-                <span className="mono-label text-[var(--bronze)]">Underwriting Matrix &amp; Covenants</span>
-                <h2 className="font-serif text-3xl sm:text-4xl font-bold">
-                  Risk &amp; Regulatory Knowledge Base
-                </h2>
-                <p className="body-sm text-[var(--text-muted-light)]">
-                  Search key questions regarding Loss-Payee assignment legal frameworks, Basel III guidelines, and underwriting SLAs.
-                </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              
+              {/* Teaser 1: Capital Modeler */}
+              <ScrollReveal delay={0}>
+                <div className="clause-card bg-white p-8 rounded-lg border border-[var(--rule-light)] space-y-6 h-full flex flex-col justify-between hover:shadow-xl transition-all">
+                  <div>
+                    <div className="w-12 h-12 rounded bg-[var(--ink)] text-[var(--bronze-light)] flex items-center justify-center border border-[var(--bronze-light)] mb-4">
+                      <Calculator className="w-6 h-6" />
+                    </div>
+                    <span className="mono-label text-xs text-[var(--bronze)] font-bold block mb-1">TOOL 01</span>
+                    <h3 className="font-serif text-xl font-bold mb-3">Capital &amp; Collateral Modeler</h3>
+                    <p className="body-sm text-xs text-[var(--text-muted-light)] leading-relaxed mb-4">
+                      Simulate facility sizes from $1M to $100M+, calculate LTV boosts, haircut reductions, and estimated premium rates.
+                    </p>
+                  </div>
+                  <Link
+                    to="/calculator"
+                    className="btn btn-primary btn-sm font-mono text-xs uppercase w-full justify-between"
+                  >
+                    <span>Open Modeler Page</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
               </ScrollReveal>
-            </div>
 
-            <ScrollReveal>
-              <RiskKnowledgeBase />
-            </ScrollReveal>
+              {/* Teaser 2: Case Studies */}
+              <ScrollReveal delay={100}>
+                <div className="clause-card bg-white p-8 rounded-lg border border-[var(--rule-light)] space-y-6 h-full flex flex-col justify-between hover:shadow-xl transition-all">
+                  <div>
+                    <div className="w-12 h-12 rounded bg-[var(--ink)] text-[var(--bronze-light)] flex items-center justify-center border border-[var(--bronze-light)] mb-4">
+                      <Layers className="w-6 h-6" />
+                    </div>
+                    <span className="mono-label text-xs text-[var(--bronze)] font-bold block mb-1">TOOL 02</span>
+                    <h3 className="font-serif text-xl font-bold mb-3">Deal Structuring Case Studies</h3>
+                    <p className="body-sm text-xs text-[var(--text-muted-light)] leading-relaxed mb-4">
+                      Filter real-world transaction breakdowns across Infrastructure, Cross-Border Receivables, Energy, and Maritime Fleet logistics.
+                    </p>
+                  </div>
+                  <Link
+                    to="/case-studies"
+                    className="btn btn-primary btn-sm font-mono text-xs uppercase w-full justify-between"
+                  >
+                    <span>View Case Studies Page</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </ScrollReveal>
+
+              {/* Teaser 3: Knowledge Base */}
+              <ScrollReveal delay={200}>
+                <div className="clause-card bg-white p-8 rounded-lg border border-[var(--rule-light)] space-y-6 h-full flex flex-col justify-between hover:shadow-xl transition-all">
+                  <div>
+                    <div className="w-12 h-12 rounded bg-[var(--ink)] text-[var(--bronze-light)] flex items-center justify-center border border-[var(--bronze-light)] mb-4">
+                      <BookOpen className="w-6 h-6" />
+                    </div>
+                    <span className="mono-label text-xs text-[var(--bronze)] font-bold block mb-1">TOOL 03</span>
+                    <h3 className="font-serif text-xl font-bold mb-3">Risk &amp; Regulatory Knowledge Base</h3>
+                    <p className="body-sm text-xs text-[var(--text-muted-light)] leading-relaxed mb-4">
+                      Searchable matrix of Loss-Payee covenants, Basel III Credit Risk Mitigation standards, and syndicate rating credentials.
+                    </p>
+                  </div>
+                  <Link
+                    to="/knowledge-base"
+                    className="btn btn-primary btn-sm font-mono text-xs uppercase w-full justify-between"
+                  >
+                    <span>Search Knowledge Base</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </ScrollReveal>
+
+            </div>
           </div>
         </section>
 
@@ -363,7 +384,7 @@ export const HomePage: React.FC = () => {
                 <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[var(--cream)]">
                   Ready to Transform Risk Into Bankable Capital?
                 </h2>
-                <p className="body-lg text-[var(--cream)] opacity-90">
+                <p className="body-lg text-[var(--cream)] opacity-90 text-sm sm:text-base">
                   Initiate a confidential underwriting conversation with our risk engineering team. We respond within structured turnaround windows.
                 </p>
                 <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">

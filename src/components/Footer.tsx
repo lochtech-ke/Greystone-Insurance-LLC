@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logoDarkSvg from '../assets/logo-greystone-dark.svg';
-import { ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { ShieldCheck, Calculator, Layers, BookOpen } from 'lucide-react';
 import { PRODUCT_INSTRUMENTS } from '../data/products';
 
 export const Footer: React.FC = () => {
@@ -36,10 +36,18 @@ export const Footer: React.FC = () => {
               Financial Instruments
             </h4>
             <ul className="space-y-3">
+              <li>
+                <Link
+                  to="/services"
+                  className="text-[var(--bronze-light)] font-mono font-bold text-xs uppercase hover:underline"
+                >
+                  All Services Directory
+                </Link>
+              </li>
               {PRODUCT_INSTRUMENTS.map((product) => (
                 <li key={product.id}>
                   <Link
-                    to={`/services#${product.id}`}
+                    to={`/services/${product.id}`}
                     className="text-[var(--text-muted-dark)] hover:text-[var(--cream)] transition-colors inline-flex items-center gap-1"
                     style={{ fontSize: '0.9375rem' }}
                   >
@@ -50,15 +58,28 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Company Column */}
+          {/* Institutional Suite Column */}
           <div>
             <h4 className="mono-label text-[var(--bronze-light)] mb-5 font-semibold">
-              Institutional Framework
+              Interactive Suite
             </h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/about" className="text-[var(--text-muted-dark)] hover:text-[var(--cream)] transition-colors" style={{ fontSize: '0.9375rem' }}>
-                  About Greystone
+                <Link to="/calculator" className="text-[var(--text-muted-dark)] hover:text-[var(--cream)] transition-colors inline-flex items-center gap-1.5" style={{ fontSize: '0.9375rem' }}>
+                  <Calculator className="w-3.5 h-3.5 text-[var(--bronze-light)]" />
+                  <span>Capital Modeler</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/case-studies" className="text-[var(--text-muted-dark)] hover:text-[var(--cream)] transition-colors inline-flex items-center gap-1.5" style={{ fontSize: '0.9375rem' }}>
+                  <Layers className="w-3.5 h-3.5 text-[var(--bronze-light)]" />
+                  <span>Case Studies Showcase</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/knowledge-base" className="text-[var(--text-muted-dark)] hover:text-[var(--cream)] transition-colors inline-flex items-center gap-1.5" style={{ fontSize: '0.9375rem' }}>
+                  <BookOpen className="w-3.5 h-3.5 text-[var(--bronze-light)]" />
+                  <span>Risk Knowledge Base</span>
                 </Link>
               </li>
               <li>
@@ -72,40 +93,40 @@ export const Footer: React.FC = () => {
                   </span>
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Company & Underwriting Desk Column */}
+          <div>
+            <h4 className="mono-label text-[var(--bronze-light)] mb-5 font-semibold">
+              Corporate &amp; Underwriting
+            </h4>
+            <ul className="space-y-3">
               <li>
-                <Link to="/contact" className="text-[var(--text-muted-dark)] hover:text-[var(--cream)] transition-colors" style={{ fontSize: '0.9375rem' }}>
-                  General Contact
+                <Link to="/about" className="text-[var(--text-muted-dark)] hover:text-[var(--cream)] transition-colors" style={{ fontSize: '0.9375rem' }}>
+                  About Greystone
                 </Link>
               </li>
               <li>
-                <Link to="/talk-to-an-underwriter" className="text-[var(--text-muted-dark)] hover:text-[var(--cream)] transition-colors inline-flex items-center gap-1.5" style={{ fontSize: '0.9375rem' }}>
+                <Link to="/contact" className="text-[var(--text-muted-dark)] hover:text-[var(--cream)] transition-colors" style={{ fontSize: '0.9375rem' }}>
+                  Contact Us
+                </Link>
+              </li>
+              <li className="pt-2">
+                <Link
+                  to="/talk-to-an-underwriter"
+                  className="btn btn-secondary btn-sm w-full justify-center"
+                >
+                  <ShieldCheck className="w-4 h-4" />
                   <span>Talk to an Underwriter</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[var(--bronze-light)]" />
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Engagement / Desk Column */}
-          <div>
-            <h4 className="mono-label text-[var(--bronze-light)] mb-5 font-semibold">
-              Underwriting Desk
-            </h4>
-            <p className="text-[var(--text-muted-dark)] mb-5 leading-relaxed" style={{ fontSize: '0.9375rem' }}>
-              Direct structuring inquiries for borrowers, procurement bidders, and financial institutions.
-            </p>
-            <Link
-              to="/talk-to-an-underwriter"
-              className="btn btn-secondary btn-sm w-full justify-center"
-            >
-              <ShieldCheck className="w-4 h-4" />
-              <span>Inquire with Underwriters</span>
-            </Link>
-          </div>
-
         </div>
 
-        {/* Placeholder Licensing Line */}
+        {/* Licensing Disclosure */}
         <div className="py-6 border-b border-[var(--rule-dark)]">
           <div className="placeholder-flag">
             <p className="text-[var(--text-muted-dark)]" style={{ fontSize: '0.8125rem', lineHeight: '1.5' }}>
@@ -114,7 +135,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Copyright & Disclaimer */}
+        {/* Copyright & Legal */}
         <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4" style={{ fontSize: '0.8125rem' }}>
           <p className="text-[var(--text-muted-dark)]">
             &copy; {new Date().getFullYear()} Greystone Insurance LLC. All rights reserved. &ldquo;Your Risk. Our Responsibility.&rdquo; is an operating philosophy of Greystone Insurance LLC.

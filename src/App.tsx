@@ -6,7 +6,11 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
+import { ProductDetailPage } from './pages/ProductDetailPage';
 import { UnlockingFinancingPage } from './pages/UnlockingFinancingPage';
+import { CapitalCalculatorPage } from './pages/CapitalCalculatorPage';
+import { CaseStudiesPage } from './pages/CaseStudiesPage';
+import { KnowledgeBasePage } from './pages/KnowledgeBasePage';
 import { ContactPage } from './pages/ContactPage';
 import { TalkToUnderwriterPage } from './pages/TalkToUnderwriterPage';
 
@@ -21,7 +25,11 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/:productId" element={<ProductDetailPage />} />
           <Route path="/unlocking-financing" element={<UnlockingFinancingPage />} />
+          <Route path="/calculator" element={<CapitalCalculatorPage />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/knowledge-base" element={<KnowledgeBasePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/talk-to-an-underwriter" element={<TalkToUnderwriterPage />} />
           <Route path="*" element={<HomePage />} />
